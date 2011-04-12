@@ -1,0 +1,15 @@
+<table width="100%" class="grid">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Message</th>
+  </tr>
+  
+  <% @feedbacks.each do |feedback| %>
+    <tr class="<%= cycle('odd', 'even')  %>" >
+      <td align=right><%= feedback.name %></td>
+      <td><%= feedback.email %></td>
+      <td><%= feedback.message %></td>
+    </tr>
+  <% end %>
+</table>

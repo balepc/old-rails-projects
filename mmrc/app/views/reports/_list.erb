@@ -1,0 +1,14 @@
+<table class="table" width="100%">
+  <tr>
+      <th>Ship Name</th>
+      <th>Arrival Port</th>
+      <th>Departure Port</th>
+    </tr>
+  <% @reports.each do |report| %>
+    <tr>
+      <td><%= report.vessel.ship_name %></td>
+      <td><%= report.lv_arrival_port.name if report.lv_arrival_port %></td>
+      <td><%= report.lv_departure_port.name if report.lv_departure_port %></td>
+    </tr>
+  <% end %>
+</table>

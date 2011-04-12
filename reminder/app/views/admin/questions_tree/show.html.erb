@@ -1,0 +1,29 @@
+<% content_for :header do %>
+  <%= stylesheet_link_tag 'vtree' %>
+  <%= javascript_include_tag 'vtree' %>
+<% end %>
+
+<% content_for :sub_menu do %>
+  <ul>
+    <li><%= link_to 'Options', admin_options_path %></li>
+  </ul>
+<% end %>
+
+
+<ul id="navmenu-v">
+  <% TreeNode.roots.each do |qt| %>
+    <li><%= render :partial => 'admin/questions_tree/option', :locals => {:qt => qt} %></li>
+  <% end %>
+  <li>
+    <%= 
+      link_to_function "Добавить" do |page|
+        page["#qt_block"].html(render(:partial => 'qt_actions', :locals => {:parent => TreeNode.new}))
+      end
+     %>
+  </li>
+</ul>
+
+<br/>
+
+<%= render :partial => 'qt_actions' %>
+

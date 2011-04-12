@@ -1,0 +1,23 @@
+<script>
+    jQuery(document).ready(function($) {
+        $('.pagination_move').livequery('click', function() {
+            $('#other_items').load(this.href)
+            return false
+        })
+    })
+</script>
+
+<img alt="Посмотрите еще здесь" src="/images/bg-name-other-gifts.gif"/>
+
+<div id="other_items">
+  <script>
+      $.ajax({
+          url: "items/other?other_class=other-gift",
+          cache: false,
+          success: function(html){
+              $("#other_items").append(html);
+          }
+      });
+  </script>
+</div>
+<br class="clear" />

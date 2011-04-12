@@ -1,0 +1,41 @@
+<% content_for :sub_menu do %>
+  <ul>
+    <li><%= link_to 'New item', new_admin_item_path %></li>
+  </ul>
+<% end %>
+
+<table width="100%" class="grid">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Site</th>
+    <th>Price</th>    
+    
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+  </tr>
+  
+  <% form_tag admin_items_path, :method => :get do %>
+    <tr>    
+      <th></th>
+      <th></th>
+      <th><input type=text name="item[site]"></input></th>
+      <th></th>    
+    
+      <th>&nbsp;</th>
+      <th><button>Filter</button></th>
+    </tr>
+  <% end %>
+  
+  <% @items.each do |item| %>
+    <tr class="<%= cycle('odd', 'even')  %>" >
+      <td align=right><%= item.title %></td>
+      <td><%= item.brief_description %></td>
+      <td><%= item.link_host %></td>
+      <td><%= item.price %></td>
+    
+      <td><%= link_to 'edit', edit_admin_item_path(item) %></td>
+      <td><%= link_to 'remove', admin_item_path(item), :method => :delete, :confirm => 'Do you really want to continue?' %></td>
+    </tr>
+  <% end %>
+</table>

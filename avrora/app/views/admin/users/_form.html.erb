@@ -1,0 +1,24 @@
+<%# already_saved = !@category.new_record? %>
+<tr class="full-row">
+  <td class="label"><%= form.label :login, "Логин", :title=>@user.errors.on(:login) %></td>
+  <td><%= form.text_field :login %></td>
+</tr>
+<tr class="full-row">
+  <td class="label"><%= form.label :email, "Email", :title=>@user.errors.on(:email) %></td>
+  <td><%= form.text_field :email %></td>
+</tr>
+<tr class="full-row">
+  <td class="label"><%= form.label :admin, "Администратор?", :title=>@user.errors.on(:admin) %></td>
+  <td><%= form.check_box :admin %></td>
+</tr>
+
+<tr class="full-row"><td colspan="2"><hr /></td></tr>
+
+<tr class="full-row">
+  <td class="label"><%= form.label :password, "Пароль", :title=>@user.errors.on(:password) %></td>
+  <td><%= form.password_field :password %></td>
+</tr>
+<tr class="full-row">
+  <td class="label"><%= form.label :password_confirmation, "Подтверждение пароля", :title=>@user.errors.on(:password_confirmation) %></td>
+  <td><%= form.password_field :password_confirmation %></td>
+</tr>

@@ -1,0 +1,9 @@
+<div class="cabinet-menu">
+  <p>
+    <%= link_to 'Профиль', user_path(current_user) %><br />
+    <%= link_to 'Напоминания', events_path %><br />
+    <%= link_to 'Контакты', persons_memos_path %><br />
+    <%= link_to 'Избранные', favorite_items_path %><br />
+    <%= link_to 'Выход', logout_path %><br />
+  </p> 
+</div>

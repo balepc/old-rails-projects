@@ -1,0 +1,130 @@
+<div id="mainContent2" style="margin-left: 30px;">
+  <%= render :partial=>'shared/breadcrumb' %>
+
+  <div class="product-description">
+    <br>
+    <h2 class="product-name"><%= @item.model %></h2>
+    <!--Центрифуга 6-местная для определения содержания воды и осадка, модель MTS 800-->
+    <br>
+    
+    <!-- Вода и осадок-->
+
+    <div style="width:189px;float:left;padding:5px 0 5px 0">
+      <%=
+      image = @item.images.first
+      if !image.nil?
+        fullUrl = image.image_data.url
+        normalUrl = image.image_data.url(:normal)
+      else
+        normalUrl = 'empty-normal.jpg'
+      end
+
+      if fullUrl.nil?
+        image_tag(normalUrl, :title=>@item.model, :style=>"margin:0;padding:0", :id=>'pic-thumb')
+      else
+        link_to image_tag(normalUrl, :title=>@item.model, :style=>"margin:0;padding:0", :id=>'pic-thumb'),
+          fullUrl, :class=>"fancybox", :id=>'pic-link'
+      end
+    %>
+      <% @item.images.each do |image| %>
+        <%=
+        mediumUrl = image.nil? ? 'empty-medium.jpg' : image.image_data.url(:medium)
+        fullUrl = image.image_data.url unless image.nil?
+        normalUrl = image.image_data.url(:normal) unless image.nil?
+        image_tag(mediumUrl, :style=>"width:86px;height:86px;float:left;padding:5px 5px 0 0;margin:0;",
+          :onmouseover=>"PictureTools.exchange('#{normalUrl}', '#{fullUrl}'); return false")
+      %>
+      <%  end %>
+      <br class="clear" />
+    </div>
+
+    <table class="descript-table">
+      <colgroup width="115px" />
+      <colgroup width="450px" />
+      <% if @item.article %>
+        <tr><td width="22%"><strong><%= t(:item_articule) %>:</strong></td><td><%= @item.article %></td></tr>
+      <% end %>
+      <!-- № М8000-ВТ, напряжение 230 вольт, 50/60 Гц.-->
+      <% if @item.company_name or @item.country_name %>
+        <tr><td><strong><%= t(:item_production) %>:</strong></td>
+        <td><%= [display_company(@item), @item.country_name].compact.join(", ") %></td></tr>
+      <% end %>
+      <% if @item.code %>
+        <tr><td><strong><%= t(:item_code)%>:</strong></td><td><%= @item.code %></td></tr>
+      <% end %>
+      <% unless @item.standards.empty? %>
+        <tr><td><strong><%= t(:item_standarts) %>:</strong></td><td>
+            <%= @item.standards.collect{|s| s.name }.join(", ") unless @item.standards.nil? %>
+        </td></tr>
+      <% end %>
+      <!-- ASTM D 91, D 893, D 2273, D 2709, D 2711-->
+
+    </table>
+
+
+    <% @item.description.split("\n").each do |paragraph| %>
+      <p class="descript-full"><%= paragraph %></p>
+    <% end unless @item.description.nil? %>
+
+    <br>
+
+    <table class="descript-table" width="100%">
+      <% unless @item.complectations.empty? %>
+        <tr><td colspan="2">
+            <br />
+            <strong><%= t(:item_complectation) %></strong>
+        </td></tr>
+        <% @items = @item.complectations %>
+        <%= render :partial=>'items/acc_table' %>
+      <% end %>
+
+    </table>
+
+
+
+
+    <table class="descript-table" width="100%">
+      <% unless @item.accessories.empty? %>
+        <tr><td colspan="2">
+            <br />
+            <strong><%= t(:item_accessories) %></strong>
+        </td></tr>
+        <% @items = @item.accessories %>
+        <%= render :partial=>'items/acc_table' %>
+      <% end %>
+
+    </table>
+
+
+
+    <table class="descript-table" width="100%">
+      <% unless @item.documents.empty? %>
+        <tr><td colspan="3">
+            <br />
+            <strong><%= t(:item_documents) %></strong>
+        </td></tr>
+      <% end %>
+
+      <tr>
+        <td>
+          <% @item.documents.each do |doc| %>
+            <% next if doc.hidden? and !logged_in? %>
+            <ul style="list-style: none;">
+              <li><%= link_to doc.document_type.name, download_document_path(doc) %> (<%= t(:valid_till) %>: <%= doc.valid_till || "-" %>)</li>
+            </ul>
+          <% end %>
+        </td>
+      </tr>
+      
+
+    </table>
+
+  </div>
+
+</div><!-- end #mainContent2 -->
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".fancybox").fancybox();
+  });
+</script>

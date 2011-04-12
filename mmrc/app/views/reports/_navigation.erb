@@ -1,0 +1,17 @@
+<ul class="navigation">  
+
+
+  <% if @report.new_record? %>
+    <li><%= link_to 'Select vessel', vessel_reports_path %><span>&gt;</span></li>
+  <% else %>
+    <li><%= link_to_step 'Vessel info', view_vessel_report_path(@report), :view_vessel %><span>&gt;</span></li>
+    <li><%= link_to_step 'Voyage Information', voyage_information_report_path(@report), :voyage_information %><span>&gt;</span></li>
+    <li><%= link_to_step 'ISPS Validity', isps_validity_report_path(@report), :isps_validity %><span>&gt;</span></li>
+    <li><%= link_to_step 'Previous Ports', previous_ports_report_path(@report), :previous_ports %><span>&gt;</span></li>
+    <li><%= link_to_step 'Ship Interfaces', ship_interfaces_report_path(@report), :ship_interfaces %><span>&gt;</span></li>
+    <li><%= link_to_step 'Passenger List', passenger_list_report_path(@report), :passenger_list %><span>&gt;</span></li>
+    <li><%= link_to_step 'Crew List', crew_list_report_path(@report), :crew_list %><span>&gt;</span></li>
+    <li><%= link_to_step 'Security Info', security_info_report_path(@report), :security_info %></li>
+  <% end %>
+
+</ul>

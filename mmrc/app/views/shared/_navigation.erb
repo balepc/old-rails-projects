@@ -1,0 +1,11 @@
+<% if logged_in? %>
+  <ul id="nav-menu">
+    <li><%= link_to 'Home', '/' %></li>
+    <li><%= link_to 'Create vessel', new_vessel_path %></li>
+    <li><%= link_to 'Create report (24)', vessel_reports_path(:report_period=>24) %></li>
+    <li><%= link_to 'Create report (72)', vessel_reports_path(:report_period=>72) %></li>
+  </ul>
+
+
+  <div id="login-box"><%= current_user.login %> <%= link_to 'Log out', '/logout' %></div>
+<% end %>

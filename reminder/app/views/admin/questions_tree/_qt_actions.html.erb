@@ -1,0 +1,18 @@
+<div id="qt_block">
+  <% if qt %>
+    <div id="delete_node_box">
+      <% form_for :question_tree, '', :html => {:method => :delete} do |f| %>
+        <%= f.hidden_field :id, :value => qt.id %>
+        <%= f.submit "Удалить '#{qt.option.name}'" %>
+      <% end %>
+    </div>
+  <% elsif parent %>
+    <div id="add_node_box">
+      <% form_for :question_tree, :url => { :action => "create" } do |f| %>
+        <%= f.hidden_field :parent_id, :value => parent.id %>
+        <%= parent.option.name if parent.option %> -> <%= f.select :option_id, Option.find(:all).map{|o| [o.name, o.id]} %>
+        <%= f.submit 'Добавить' %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

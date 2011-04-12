@@ -1,0 +1,35 @@
+<%= render :partial=>'navigation' %>
+
+<h2>Change Vessel</h2>
+
+<center>
+  <% form_for @report, :url=>update_vessel_report_path(@report) do |form| %>
+    <%= form.text_field :vessel_imon, :id=>'vessel_imon', :autocomplete=>'on' %>
+
+    <%= form.submit "Continue" %>
+  <% end %>
+</center>
+
+<script type="text/javascript">
+  <!--
+  $(document).ready(function() {
+    vessels = <%= Vessel.find(:all, :select=>"ship_name, imon", :conditions=>["imon LIKE ? OR ship_name LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%"]).collect{|v|  {:name=>v.ship_name.strip, :imon=>v.imon} }.to_json %>
+    $("#vessel_imon").autocomplete(vessels, {
+      minChars: 0,
+      width: 310,
+      matchContains: "word",
+      autoFill: false,
+
+      formatItem: function(row, i, max) {
+        return i + "/" + max + ": \"" + row.name + "\" [" + row.imon + "]";
+      },
+      formatMatch: function(row, i, max) {
+        return row.name + " " + row.imon;
+      },
+      formatResult: function(row) {
+        return row.imon;
+      }
+    });
+  })
+  //-->
+</script>

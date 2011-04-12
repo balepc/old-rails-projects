@@ -1,0 +1,23 @@
+<%= render :partial=>'navigation' %>
+
+<h2>Crew List</h2>
+
+<center>
+  <% form_for @report, :url=>save_crew_list_report_path(@report) do |form| %>
+    <fieldset>
+      <ol>
+        <% form.fields_for @report.crew.first do |passenger| %>
+          <%= passenger.hidden_field :report_id, :value=> @report.id %>
+          <% passenger.fields_for :contact_attributes, @crew.contact do |contact| %>
+            <li><%= contact.label :first_name %><%= contact.text_field :first_name, :class=>'text' %></li>
+            <li><%= contact.label :last_name %><%= contact.text_field :last_name, :class=>'text' %></li>
+            <li><%= contact.label :sex %><%= contact.text_field :sex, :class=>'text' %></li>
+            <li><%= contact.label :email %><%= contact.text_field :email, :class=>'text' %></li>
+            <li><%= contact.label :address %><%= contact.text_field :address, :class=>'text' %></li>
+          <% end %>
+        <% end %>
+      </ol>
+    </fieldset>
+    <%= form.submit "Continue" %>
+  <% end %>
+</center>

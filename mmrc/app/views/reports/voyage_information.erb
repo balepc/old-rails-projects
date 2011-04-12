@@ -1,0 +1,15 @@
+<%= render :partial=>'navigation' %>
+
+<h2>Voyage Information</h2>
+
+<center>
+  <% form_for @report, :url=>save_voyage_information_report_path(@report) do |form| %>
+    <fieldset>
+      <ol>
+        <li><%= form.label :lv_arrival_port_id %><%= form.select :lv_arrival_port_id, Port.all.map{|p| [p.name, p.id]}, :class=>'text' %></li>
+        <li><%= form.label :lv_departure_port_id %><%= form.select :lv_departure_port_id, Port.all.map{|p| [p.name, p.id]}, :class=>'text' %></li>
+      </ol>
+    </fieldset>
+    <%= form.submit "Continue" %>
+  <% end %>
+</center>

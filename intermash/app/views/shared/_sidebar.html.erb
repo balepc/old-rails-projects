@@ -1,0 +1,19 @@
+<div id="sidebar-left2">
+  <div class="arrowlistmenu">
+    <% @categories.each do |cat| %>
+      <h3 class="menuheader expandable"><%= cat.name %></h3>
+      <ul class="categoryitems">
+        <% cat.children.each do |item| %>
+          <li><%= link_to item.name, category_path(item) %></li>
+          <% unless item.children.empty? %>
+            <% item.children.each do |c| %>
+              <li style="margin-left: 30px;"><%= link_to c.name, category_path(c) %></li>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+  
+  <!-- end #sidebar-left2 -->
+</div>

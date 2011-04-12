@@ -1,0 +1,29 @@
+<% content_for :sub_menu do %>
+  <%= link_to image_tag('admin/page_new.gif')+'Добавить тип документа', new_admin_document_type_path %>
+<% end %>
+
+<table class="list-table">
+  <tr>
+    <td class="table_heading table_checkcol"><input type="checkbox" class="check" disabled/></td>
+    <td class="table_heading">Название</td>
+    <td class="table_heading">Требуется авторизация</td>
+    <td class="table_heading">Базовый документ</td>
+
+    <td class="table_heading table_linkcol">&nbsp;</td>
+  </tr>
+
+  <% @document_types.each do |block| %>
+    <tr class="<%= cycle('', 'grey')  %>" >
+      <td class="table_checkcol"><input type="checkbox" class="check" disabled/></td>
+      <td><%= bt block.name, 50 %></td>
+      <td><%= bt yes_no(block.hidden), 50 %></td>
+      <td><%= bt yes_no(!block.basedocument_file_name.nil?), 50 %></td>
+
+      <td style="text-align:center">
+        <%= link_to image_tag('admin/application_form_edit.png', :title=>'Редактировать тип документа'), edit_admin_document_type_path(block) %>
+        <%= link_to image_tag('admin/application_form_delete.png', :title=>'Удалить тип документа'), admin_document_type_path(block), :method => :delete, :confirm => 'Вы действительно хотите удалить запись?' %>
+      </td>
+    </tr>
+  <% end %>
+
+</table>

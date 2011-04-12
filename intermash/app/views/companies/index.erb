@@ -1,0 +1,16 @@
+<div id="wrap-content-2cols-maincatalog">
+
+  <table width="100%" style="float: left; margin-top: 20px;" >
+    <% @companies.in_groups_of(4).each do |chunk| %>
+      <tr>
+        <% chunk.each do |company| %>
+          <% if company %>
+            <td><%= link_to company.name, company_categories_path(company), :class=>'categoryheader' %></td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+
+  <br class="clear" />
+</div>

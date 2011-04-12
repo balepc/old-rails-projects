@@ -1,0 +1,53 @@
+<% content_for :header do %>
+  <%= stylesheet_link_tag 'vtree' %>
+  <%= javascript_include_tag 'vtree' %>
+<% end %>
+
+<div class="process-form">
+  <img src="/images/bg-process-form.gif" alt="Подбор подарков" />
+  
+  <% 
+  if @tree_node
+    node = @tree_node.is_question? ? @tree_node : @tree_node.child_question
+  else
+    node = TreeNode.root
+  end
+%>
+  
+  <% if node %>
+    <p><%= node.option.name %></p>
+    <form action="/dashboard" class="choice" method="get">
+      <%= token_tag %>
+      <fieldset>
+        <table>
+          <% node.children.each do |child| %>
+            <tr><td><input name="tree_node_id" type="radio" value="<%= child.id %> " class="select-option" /></td><td><label for="tree_node_id"><%= child.option.name   %></label></td></tr>
+          <% end %>
+        </table>
+      </fieldset>
+      <input name="submit" type="image" src="/images/button-submit.gif" class="submit" alt="Выбрать" />
+    </form>
+  <% end %>
+  <br class="clear" />
+  <% if @tree_node %>
+    <div class="pred-choice">
+      <p>Вы выбираете подарок для:</p>
+      <table>
+        <% @tree_node.all_parent_stack.reverse.each do |stack_el_id| %>
+          <% stack_el = TreeNode.find(stack_el_id) %>
+          <% unless stack_el.is_question? %>
+            <tr>
+              <td class="decisions"><%= stack_el.option.name %></td>
+              <% if stack_el.parent_answer %>
+                <td><%= link_to 'Изменить', dashboard_path(:tree_node_id => stack_el.parent_answer.id) %></td>
+              <% else %>
+                <td><%= link_to 'Изменить', reset_dashboard_path %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div> 
+  <% end %>
+          
+</div>

@@ -1,0 +1,33 @@
+<% content_for :sub_menu do %>
+  <%= link_to image_tag('admin/page_new.gif')+'Добавить категорию', new_admin_category_path %>
+<% end %>
+
+<% content_for :lang_menu do %>
+  <%= render :partial => "/admin/shared/lang" %>
+<% end %>
+
+<table class="list-table">
+  <tr>
+    <td class="table_heading table_checkcol"><input type="checkbox" class="check" disabled/></td>
+    <td class="table_heading px260">Родительская категория</td>
+    <td class="table_heading px260">Название</td>
+    
+
+    <td class="table_heading table_linkcol">&nbsp;</td>
+  </tr>
+
+  <% @categories.each do |block| %>
+    <tr class="<%= cycle('', 'grey')  %>" >
+      <td class="table_checkcol"><input type="checkbox" class="check" disabled/></td>
+      <td><%= bt block.parent.name, 22 unless block.parent.nil? %></td>
+      <td><%= bt block.name, 22 %></td>
+      
+
+      <td style="text-align:center">
+        <%= link_to image_tag('admin/application_form_edit.png', :title=>'Редактировать категорию'), edit_admin_category_path(block) %>
+        <%= link_to image_tag('admin/application_form_delete.png', :title=>'Удалить категорию'), admin_category_path(block), :method => :delete, :confirm => 'Вы действительно хотите удалить запись?' %>
+      </td>
+    </tr>
+  <% end %>
+
+</table>

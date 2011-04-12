@@ -1,0 +1,12 @@
+<% content_for :sub_menu do %>
+  <ul>
+    <li><%= link_to 'New tag', new_admin_tag_path %></li>
+  </ul>
+<% end %>
+
+<div >
+  <%= error_messages_for :tag %>
+  <% form_for :tag, @tag, :url => admin_tag_path(@tag), :html => {:method => :post, :multipart => true} do |f| %>
+    <%= render :partial => 'form', :locals => {:f => f} %>
+  <% end %>
+</div>

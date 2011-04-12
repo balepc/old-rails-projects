@@ -1,0 +1,19 @@
+<%= javascript 'admin/admin_form' %>
+
+<% content_for :sub_menu do %>
+  <%= link_to image_tag('admin/page_text.gif')+'Назад к списку', admin_view_translations_path %>
+<% end %>
+
+<% form_for @translation, :url=>admin_view_translation_path(@translation) do |form| %>
+  <table class="full-form">
+    <colgroup width="100" />
+
+    <%= render :partial => 'form', :locals=>{:form=>form}  %>
+    <tr>
+      <td colspan="2" class="form-controls">
+        <hr />
+        <%= form.submit "Обновить" %> <%= form.submit "Обновить и вернуться к списку" %>
+      </td>
+    </tr>
+  </table>
+<% end %>

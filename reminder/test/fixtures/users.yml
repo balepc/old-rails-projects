@@ -1,0 +1,6 @@
+one:
+  id: 1
+  login: balepc
+  email: balepc@gmail.com
+  crypted_password: 65f9b4eaec3323c0dcef3b6b62ee5222f194944b
+  salt: b08a9cb9e62391b570679b6b7daecf260ab514a9

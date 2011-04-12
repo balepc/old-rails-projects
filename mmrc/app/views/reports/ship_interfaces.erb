@@ -1,0 +1,13 @@
+<%= render :partial=>'navigation' %>
+
+<h2>Ship Interfaces</h2>
+
+<center>
+  <% form_for @report, :url=>save_ship_interfaces_report_path(@report) do |form| %>
+    <fieldset>
+      <ol>
+      </ol>
+    </fieldset>
+    <%= form.submit "Continue" %>
+  <% end %>
+</center>

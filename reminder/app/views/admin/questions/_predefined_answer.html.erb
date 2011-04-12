@@ -1,0 +1,20 @@
+<div class="option">
+  <% @option = option %>
+  <%= error_messages_for :option %>
+  <% fields_for "question[options_attributes][]", option do |f| %>
+    <%= f.label :name, "Name :" %>
+    <%= f.text_field :name, :index => nil %> 
+    <% if option.new_record? %>
+      <%= link_to_function '&nbsp;', "this.up('.option').remove()", :class => 'delete' %>
+    <% else %>
+      <%= link_to_function '&nbsp;', "mark_for_destroy(this)", :class => 'delete' %>
+      <%= f.hidden_field :id, :index => nil %>
+      <%= f.hidden_field :should_destroy, :index => nil, :class => 'should_destroy' %>
+    <% end %>
+  
+  <% end %>
+  <br />
+  <% if @question.options.last != option %>
+    <hr noshade size="1"/>
+  <% end  %>
+</div>

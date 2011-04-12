@@ -1,0 +1,14 @@
+<table width="100%" class="table">
+  <tr>
+    <th>Code</th>
+    <th>Name</th>
+    <th>Country</th>
+  </tr>
+  <% @ports.each do |port| %>
+  <tr>
+    <td><%= port.code %></td>
+    <td><%= port.name %></td>
+    <td><%= port.country %></td>
+  </tr>
+  <% end %>
+</table>

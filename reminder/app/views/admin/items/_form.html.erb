@@ -1,0 +1,144 @@
+<% content_for :header do %>
+  <%= stylesheet_link_tag 'vtree' %>
+  <%= javascript_include_tag 'vtree' %>
+<% end %>
+
+<p id="fm-intro">Fields in <strong>bold</strong> are required.</p>
+
+<%= "<p style=\"color:red;\">New record</p>" if @item.new_record? %>
+
+<fieldset>
+  <legend>General information</legend>
+  <div class="fm-req">
+    <%= f.label :title, 'Title:' %>
+    <%= f.text_field :title %>
+  </div>    
+  <div class="fm-req">
+    <%= f.label :description, 'Brief description:' %>
+    <%= f.text_field  :brief_description %>
+  </div>
+  <div class="fm-opt">
+    <%= f.label :description, 'Category:' %>
+    <%= f.select :category_id, ['']+Category.find(:all).map{|c| [ c.title, c.id]} %>
+  </div>
+  <div class="fm-opt">
+    <%= f.label :description, 'Price category:' %>
+    <%= f.select :price_category_id, ['']+PriceCategory.find(:all).map{|c| [ c.title, c.id]} %>
+  </div>
+  <div class="fm-req">
+    <label>Textile</label>
+    use <a href="http://www.textism.com/tools/textile/">http://www.textism.com/tools/textile/</a>
+  </div>
+  <div class="fm-req">
+    
+    <%= f.label :description, 'Description:' %>
+    <%= f.text_area  :description %>
+  </div>
+  <div class="fm-req">
+    <%= f.label :link, 'Link:' %>
+    <%= f.text_field :link %>
+  </div>  
+  <div class="fm-req">
+    <%= f.label :price, 'Price:' %>
+    <%= f.text_field :price %> <%= f.select :currency_id, Currency.find(:all).map{|c| [ c.name, c.id]} %>
+  </div>
+</fieldset>
+
+
+<fieldset id="holidays_box">
+  <legend>Holidays</legend>
+  
+  <div id="holiday_ids">
+    <% @item.holidays.each do |holiday| %>
+      <input type="hidden" name="item[holiday_ids][]" value="">
+      <input type="hidden" name="item[holiday_ids][]" value="<%= holiday.id %>">
+    <% end %>
+  </div>
+
+  <script>
+      $(document).ready(function(){
+        $("#holidays_box a").click(function() {
+          $(this).toggleClass('selected');
+          var id = $(this).attr('value');
+          if ($('#holiday_ids input[value='+id+']').length > 0) {
+            $('#holiday_ids input[value='+id+']').remove();  
+          } else {
+            $('#holiday_ids').append('<input type="hidden" name="item[holiday_ids][]" value="'+id+'">');
+          }
+          return false;
+        });
+      });
+  </script>
+  
+  
+  <% Holiday.find(:all).each do |holiday| %>
+    <% if @item.holidays.include?(holiday) %>
+      [<%= link_to holiday.title, '#', :class => 'selected', :value => holiday.id %>]&nbsp;&nbsp;&nbsp;
+    <% else %>
+      [<%= link_to holiday.title, '#', :value => holiday.id %>]&nbsp;&nbsp;&nbsp;
+    <% end %>
+  <% end %>
+</fieldset>
+
+<fieldset>
+  <legend>Selection</legend>
+  
+  <div id="selection_box">
+    <% @item.tree_node_items.each do |tree_node_item| %>
+      <div>
+        <%= tree_node_item.tree_node.full_name %> <%= link_to 'x', admin_item_tree_node_path(@item, tree_node_item.tree_node), :method => :delete, :style => 'color: red;' %><br/>
+      </div>
+    <% end  %>
+  </div>
+  <br/>
+  <ul id="navmenu-v">
+    <% TreeNode.roots.each do |qt| %>
+      <li><%= render :partial => 'option', :locals => {:qt => qt, :f => f} %></li>
+    <% end %>
+  </ul>
+  
+</fieldset>
+
+<fieldset>
+  <legend>SEO stuff</legend>
+  <div class="fm-opt">
+    <%= f.label :price, 'Title:' %><%= f.text_field :seo_title %>
+  </div>
+  <div class="fm-opt">
+    <%= f.label :price, 'Description:' %><%= f.text_area :seo_description %>
+  </div>
+  <div class="fm-opt">
+    <%= f.label :price, 'Keywords:' %><%= f.text_field :seo_keywords %>
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend>Images</legend>
+  <table style="margin-left: 100px;">
+    <% @item.assets.each do |asset| %>
+      <tr>
+        <td><%= image_tag(asset.public_filename(:square))%></td>
+        <td><%= link_to 'delete', admin_asset_path(asset), :method => :delete %> - 
+          <% if asset.default? %>
+            default
+          <% else %>
+            <%= link_to 'set default', set_default_admin_asset_path(asset), :method => :post %></td>
+          <% end %>
+      </tr>
+    <% end %>
+    <tr><td>&nbsp;</td><td></td></tr>
+    <tr><td>#1</td><td><%= custom_file_field 'item[pictures][]' %></td></tr>
+    <tr><td>#2</td><td><%= custom_file_field 'item[pictures][]' %></td></tr>
+    <tr><td>#3</td><td><%= custom_file_field 'item[pictures][]' %></td></tr>
+  </table>
+  
+</fieldset>
+<div id="fm-submit" class="fm-req">
+  <%= f.submit 'Save' %> <%= f.submit 'Save go back' %>
+      
+</div>
+
+
+
+
+

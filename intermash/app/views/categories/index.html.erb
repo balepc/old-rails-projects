@@ -1,0 +1,38 @@
+<div id="wrap-content-2cols-maincatalog">
+  <% if @company %>
+    <h3 style="margin-top: 50px; margin-left: 27px;"><%= @company.name %></h3>
+  <% end %>
+
+  <%# 4 groups in 1st column, 6+ groups in 2nd %>
+
+  <% @categories.to_a.chunk(2).each do |chunk| %>
+    <div class="part-catalog">
+      <% chunk.each do |root| %>
+        <%= link_to root.name, 'javascript:;', :class=>'categoryheader', :onclick=>"$('#parent_#{root.id}').slideToggle(); return false;" %><br>
+        <ul class="categoryitems2" style="display:none;" id="<%= "parent_#{root.id}" %>">
+          <% root.children.each do |child| %>
+            <% next unless show_category?(child, @company_id) %>
+            <li>
+              <% if child.leaf? %>
+                <%= link_to child.name, category_path(child) %>
+              <% else %>
+                <%= link_to child.name, 'javascript:;', :onclick=>"$('#parent_#{child.id}').slideToggle(); return false;" %>
+                <ul class="categoryitems2" style="margin-bottom: 0px; display:none;" id="parent_<%=child.id%>">
+                  <% child.children.each do |ch| %>
+                    <% next unless show_category?(ch, @company_id) %>
+                    <li><%= link_to ch.name, category_path(ch) %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+      <!-- end #part-catalog -->
+    </div>
+
+  <% end %>
+
+  <br class="clear" />
+  <!-- end #wrap-content-2cols -->
+</div>

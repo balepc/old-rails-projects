@@ -1,0 +1,37 @@
+<%= render :partial=>'navigation' %>
+
+<h2>ISPS Validity</h2>
+
+<center>
+  <% form_for @report, :url=>save_isps_validity_report_path(@report) do |form| %>
+    <fieldset>
+      <ol>
+        <li><%= form.label :cert_issue_authority %><%= form.text_field :cert_issue_authority, :class=>'inputDate', :id=>'inputDate', :value=>'06/14/2008' %></li>
+
+        <li><%= form.label :cert_issue_dt %><%= form.date_select :cert_issue_dt, :class=>'text' %></li>
+        <li><%= form.label :cert_valid_dt %><%= form.date_select :cert_valid_dt, :class=>'text' %></li>
+        <li><%= form.label :curr_ship_sec_lvl %><%= form.text_field :curr_ship_sec_lvl, :class=>'text' %></li>
+      </ol>
+    </fieldset>
+    <%= form.submit "Continue" %>
+  <% end %>
+</center>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#inputDate').DatePicker({
+      format:'m/d/Y',
+      date: $('#inputDate').val(),
+      current: $('#inputDate').val(),
+      starts: 1,
+      position: 'r',
+      onBeforeShow: function(){
+        $('#inputDate').DatePickerSetDate($('#inputDate').val(), true);
+      },
+      onChange: function(formated, dates){
+        $('#inputDate').val(formated);
+      }
+
+    });
+  });
+</script>

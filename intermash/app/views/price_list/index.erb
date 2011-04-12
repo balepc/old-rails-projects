@@ -1,0 +1,15 @@
+<div id="wrap-content-2cols">
+  <div class="general-info-block">
+    <h2>Прайс-лист</h2>
+
+    <ul>
+      <% @price_lists.each do |pl| %>
+        <li><%= link_to pl.name, download_pricelist_path(pl), :class=>'category_link' %></li>
+      <% end %>
+    </ul>
+
+  </div>
+
+  <br class="clear" />
+
+</div>

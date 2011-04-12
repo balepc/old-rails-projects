@@ -1,0 +1,10 @@
+<% content_for :sub_menu do %>
+  <%= link_to image_tag('admin/page_new.gif')+'Добавить картинку', new_admin_random_image_path %>
+<% end %>
+
+<% @images.each do |block| %>
+  <div style="float:left;width:110px;height:80px;padding:5px">
+  <%= image_tag block.image.url(:small) %>
+  <%= link_to image_tag('admin/application_form_delete.png', :title=>'Удалить картинку'), admin_random_image_path(block), :method => :delete, :confirm => 'Вы действительно хотите удалить запись?' %>
+  </div>
+<% end %>

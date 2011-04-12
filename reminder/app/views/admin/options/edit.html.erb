@@ -1,0 +1,6 @@
+<div >
+  <%= error_messages_for :option %>
+  <% form_for :option, @option, :url => admin_option_path(@option), :html => {:method => :put, :multipart => true, :id => 'form'} do |f| %>
+    <%= render :partial => 'form', :locals => {:f => f} %>
+  <% end %>
+</div>

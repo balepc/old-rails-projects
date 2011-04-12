@@ -1,0 +1,24 @@
+ul.navigation {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 7pt;
+
+}
+
+ul.navigation li {
+    float: left;
+    margin: 0 0.15em;
+}
+
+ul.navigation span {
+    margin-left: 5px;
+}
+
+h2 {
+    clear: both;
+}
+
+.vessel-info li {
+    list-style-type: none;
+}

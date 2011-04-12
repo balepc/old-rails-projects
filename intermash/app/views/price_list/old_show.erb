@@ -1,0 +1,57 @@
+<div id="wrap-content-2cols">
+  <div class="general-info-block">
+    <h2>Прайс-лист</h2>
+    <center>
+      <div style="background-color: orange; marin-top: 5px; margin-bottom: 5px; text-align: center; display: inline;"><%= flash[:notice] %></div>
+    </center>
+
+
+    <% form_tag formatted_generate_pricelist_path(), :class=>'price-form', :method=>:get do %>
+
+      <table>
+        <colgroup width="8px" valign="top" />
+
+        <colgroup width="400px" />
+        <tr>
+          <td colspan="2"><%= t(:choose_categories) %></td>
+        </tr>
+
+        <tr style="height: 50px;">
+          <td><input class="check" type="checkbox" id="toggler"/></td>
+          <td><label style="font-size: 6pt;" id="toggle_label">Выбрать все</label></td>
+        </tr>
+
+        <script>
+          $(document).ready(function(){
+            $("#toggler").click(function() {
+              if (this.checked) {
+                $('form.price-form input').attr('checked', true);
+                $("#toggle_label").html('Очистить все');
+              } else {
+                $('form.price-form input').removeAttr('checked');
+                $("#toggle_label").html('Выбрать все');
+              }
+            });
+          });
+        </script>
+
+
+
+        <% @categories.each do |category| %>
+          <tr>
+            <td><input class="check" name="categories[]" type="checkbox" value="<%= category.id %>"/></td>
+            <td><label><%= category.name %></label></td>
+          </tr>
+        <% end %>
+
+        <tr>
+          <td colspan="2"><input name="submit" src="/images/bg-price-button.gif" class="submit2" alt="<%= I18n.t(:generate) %>" type="image" /></td>
+        </tr>
+      </table>
+    <% end %>
+
+  </div>
+
+  <br class="clear" />
+
+</div>    

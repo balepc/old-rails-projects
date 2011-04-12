@@ -1,0 +1,24 @@
+<%# already_saved = !@standard.new_record? %>
+<%= hint_for @standard, :name %>
+<tr class="full-row">
+  <td class="label"><%= form.label :name, "Название", :title=>@standard.errors.on(:name) %></td>
+  <td><%= form.text_field field_value('name') %></td>
+</tr>
+<tr class="full-row">
+  <td class="label"><%= form.label field_value('is_group'), "Группа?" %></td>
+  <td><%= check_box_tag 'standard[group]', 'is_group', @standard.is_group?, :id=>'group_check' %></td>
+</tr>
+<tr class="full-row" id="parent_container">
+  <td class="label"><%= form.label field_value('standard'), "Род. группа" %></td>
+  <td><%= form.select :group_id, @groups.map {|c| [c.name, c.id] }, :include_blank => true  %></td>
+</tr>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#parent_container").toggle(<%= !@standard.is_group? %>)
+		$("#group_check").click(function () {
+			var show = !$(this).attr('checked')
+			$("#parent_container").toggle(show)
+		})
+	})
+</script>

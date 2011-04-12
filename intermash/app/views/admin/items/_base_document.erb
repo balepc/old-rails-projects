@@ -1,0 +1,31 @@
+<tbody class="document_container">
+  <tr>
+    <% new_or_existing = base_document.new_record? ? 'new' : 'existing' %>
+    <% prefix = "item[#{new_or_existing}_document_fields][]" %>
+    <% fields_for prefix, base_document do |document_form| -%>
+
+      <% if base_document.new_record? %>
+        <% content_tag(:td, :style=> base_document.errors.on(:document_file_name).blank? ? "" : "background-color: pink;") do %>          
+        <% end %>
+      <% else %>
+        <td><%= document_form.hidden_field :id, :value=>base_document.id %><%= link_to base_document.document_type.basedocument_file_name, download_base_document_path(base_document) %></td>
+      <% end %>
+
+
+      <td><%= document_form.select :document_type_id, DocumentType.base.all.map{|d| [d.name, d.id]}, :include_blank=>false %></td>
+      <td><%= base_document.document_type.valid_till unless base_document.new_record? %></td>
+
+      <td>
+        <%= link_to_function "Удалить",
+          "$(this).closest('.document_container').remove(); documentsChanged()" %>
+      </td>
+    <% end -%>
+  </tr>
+</tbody>
+
+<script type="text/javascript">
+  function documentsChanged() {
+    var len = $("#custom_documents tbody.document_container").length
+    $("#custom_documents").toggle(len > 0)
+  }
+</script>

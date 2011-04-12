@@ -1,0 +1,15 @@
+<%= render :partial=>'navigation' %>
+
+<h2>Previous Ports</h2>
+
+<center>
+  <% form_for @report, :url=>save_previous_ports_report_path(@report) do |form| %>
+    <fieldset>
+      <ol>
+        <li><%= form.label :last_port_id %><%= form.select :last_port_id, Port.all.map{|p| [p.name, p.id]}, :class=>'text' %></li>
+        <li><%= form.label :next_port_id %><%= form.select :next_port_id, Port.all.map{|p| [p.name, p.id]}, :class=>'text' %></li>
+      </ol>
+    </fieldset>
+    <%= form.submit "Continue" %>
+  <% end %>
+</center>

@@ -1,0 +1,143 @@
+* {margin:0; padding: 0;}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;}
+.clear {
+    clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;}
+.floatRight {float: right;}
+.floatLeft {float: left;}
+
+a img {border: none; }
+
+table.list-table {
+    width: 100%;
+}
+
+table.list-table td{
+    /*border: 1px solid #bacde9;*/
+    font-size: 11px;
+    color:#000;
+    padding: 3px 5px;
+    text-align:left;
+    vertical-align:middle;
+}
+
+td.px55 {
+    width: 55px;
+    max-width: 55px;
+}
+
+td.px225 {
+    width: 225px;
+    max-width: 225px;
+}
+
+td.px260 {
+    width: 260px;
+    max-width: 260px;
+}
+
+td.px300 {
+    width: 200px;
+    max-width: 200px;
+}
+
+td.px170 {
+    width: 170px;
+}
+
+td.px120 {
+    width: 120px;
+    max-width: 120px;
+}
+
+td.px20 {
+    width: 20px;
+    max-width: 20px;
+}
+
+td.px75 {
+    width: 75px;
+    max-width: 75px;
+}
+td.px400 {
+    width: 330px;
+}
+
+input.check {margin: 0 2px;}
+input.px225 {width: 225px; }
+input.px120, select.px120 {width: 120px;}
+input.px170, select.px170 {width: 170px;}
+input.px300, select.px300 {width: 300px;}
+input.px400, select.px400 {width: 400px;}
+input.px75, select.px75 {width: 75px;}
+input.px55, select.px55, input.button {width: 55px;}
+input.px20   {width: 20px;}
+
+button.px90 {width:90px;}
+
+
+table.list-table td.table_heading {
+    /*background:#dcedff;*/
+    color: #000;
+    text-align:center;
+    padding: 5px 0;
+    font-size: 11px;
+    font-weight:bold;
+    vertical-align:middle;}
+table.list-table td.table_heading span {float: left; padding: 3px 5px 3px 16px; }
+table.list-table td.table_heading a img {
+    /*border: 1px solid red;*/
+    float: left;
+    margin: 7px 0 0 0;}
+
+table.list-table td.filter {
+    padding: 3px;
+    text-align:center;
+    vertical-align:middle;}
+
+table.list-table td.num {
+    text-align: right;
+}
+
+span.red {color:#fb1c1c;}
+span.green {color:#029c4e;}
+
+table.list-table td.td_img {text-align: center;}
+
+table.list-table tr.grey {background: #f6f7f7;}
+/***************** Pagination ******************************/
+div.pagination {
+    margin: 7px 0;
+    
+    width: 180px;
+/*border: 1px solid green;*/}
+div.pagination a img {margin: 3px; float: left;}
+
+div.pagination form {float: left;}
+div.pagination form input {
+    width: 30px;
+    height: 12px;
+    font-size: 11px;
+    }
+
+
+img.small_image {
+    width: 50px;
+    height: 38px;
+}
+
+/******************/
+td.table_checkcol {
+    width: 28px;
+    text-align: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+td.table_linkcol {
+    width: 50px;
+    text-align: center;
+}

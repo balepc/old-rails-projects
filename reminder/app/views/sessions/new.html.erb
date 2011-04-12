@@ -1,0 +1,21 @@
+<div class="authorization-form-wrap">    
+  <h2>Авторизация пользователя</h2>
+  <%= flash[:error]  %>
+  <%= flash[:notice]  %>
+  <% form_tag session_path, :class=>'autho' do -%>
+    <fieldset>
+      <%= label :login, 'Логин:' %>
+      <%= text_field_tag 'login', @login, :class=>'textfield', :size=>30 %>
+      <br />
+      
+      <%= label :password, 'Пароль:' %>
+      <%= password_field_tag 'password', nil, :class=>'textfield', :size=>30 %>
+      <br />
+      <%= link_to 'Забыли пароль?', remind_path %>
+      <p><%= submit_tag 'Войти', :class => 'submit-reset'  %></p>
+    </fieldset>
+  <% end -%>
+</div>
+
+
+

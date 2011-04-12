@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>GiPoo.NET is under construction</title>
+
+    <style>
+      body {
+        background-color: black;
+        font-size: 8pt;
+        font-family: sans-serif;
+        color: gray;
+      }
+      a {
+        color: #e7dede;
+        text-decoration: none;
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+    <div id="header">
+      <%= link_to '+', new_asset_path %> <%= link_to 'i', assets_path %>
+    </div>
+
+
+    
+
+    <%= yield %>
+  </body>
+</html>

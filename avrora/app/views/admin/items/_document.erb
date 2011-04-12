@@ -1,0 +1,31 @@
+<tbody class="document_container">
+  <tr>
+    <% new_or_existing = document.new_record? ? 'new' : 'existing' %>
+    <% prefix = "item[#{new_or_existing}_document_fields][]" %>
+    <% fields_for prefix, document do |document_form| -%>
+
+      <% if document.new_record? %>
+        <% content_tag(:td, :style=> document.errors.on(:document_file_name).blank? ? "" : "background-color: pink;") do %>
+          <%= document_form.file_field field_value("document"), :rows=>5, :title=>document.errors.on(:document_file_name) %>
+        <% end %>
+      <% else %>
+        <%= document_form.hidden_field :id, :value=>document.id %>
+        <td><%= link_to document.document_file_name, download_document_path(document) %></td>
+      <% end %>
+      <td><%= document_form.select :document_type_id, DocumentType.all.map{|d| [d.name, d.id]}, :include_blank=>false %></td>
+      <td><%= document_form.text_field :valid_till, :title=>document.errors.on(:valid_till), :style=> document.errors.on(:valid_till).blank? ? "" : "background-color: pink;" %></td>
+
+      <td>
+        <%= link_to_function "Удалить",
+          "$(this).closest('.document_container').remove();documentsChanged()" %>
+      </td>
+    <% end -%>
+  </tr>
+</tbody>
+
+<script type="text/javascript">
+  function documentsChanged() {
+    var len = $("#custom_documents tbody.document_container").length
+    $("#custom_documents").toggle(len > 0)
+  }
+</script>

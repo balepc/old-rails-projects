@@ -1,0 +1,48 @@
+/***** Structure   ***********/
+body {background: #eef7ff url(/images/admin/bg_blue.gif) top left repeat-x;}
+#header {background: #004fa2;}
+div.menu a {background:#025dc5;}
+div.menu a.selected {color: #004fa2;}
+div.menu a:hover {color: #004fa2;}
+div.submenu { /*border-bottom: 5px #eef7ff  solid;*/ }
+div.submenu a, .full-form a {	color: #004fa2;}
+#footer { background: #eef7ff;}
+
+#lang_container a:hover { background-color: #dcedff; }
+#lang_container a.selected, div.submenu span.selected { background: #025dc5; }
+#lang_container { background: #EEF7FF; }
+div.submenu span.locked { background: #EEF7FF; }
+
+.page-header { background: #025dc5; }
+.page-body { border: solid 1px #025dc5; }
+
+/********** List *******************/
+table.list-table td{border: 1px solid #bacde9;}
+table.list-table td.table_heading {	background:#dcedff;}
+
+
+/************ Dashboard **********************/
+span.widget_menu a {  color: #004fa2; }
+div.widget_content a.color_a {color: #004fa2; }
+div.widget_content ol li a:hover {color: #004fa2;}
+div.widget_3x1 {border: 1px solid #b3ceeb; }
+div.widget_3x1_header {
+		background: #dcedff;
+		border-bottom: 1px solid #b3ceeb;
+		}
+div.widget_1x1 {border: 1px solid #b3ceeb;}
+div.widget_1x1_header {
+		background: #dcedff;
+		border-bottom: 1px solid #b3ceeb;}
+div.widget_2x2 {border: 1px solid #b3ceeb;}
+div.widget_2x2_header {
+		background: #dcedff;
+		border-bottom: 1px solid #b3ceeb;}
+
+
+/************ Login ****************************/
+div.login_container {border: 1px solid #b3ceeb;}
+div.login_container h2 {
+		background:#dcedff;
+		border-bottom: 1px solid #b3ceeb;}
+table.login_table td a {color: #004fa2; }

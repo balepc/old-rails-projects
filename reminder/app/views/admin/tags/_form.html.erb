@@ -1,0 +1,39 @@
+<p id="fm-intro">Fields in <strong>bold</strong> are required.</p>
+
+<%= "<p style=\"color:red;\">New record</p>" if @tag.new_record? %>
+
+<fieldset>
+  <legend>General information</legend>
+  <div class="fm-req">
+    <%= f.label :name, 'Name:' %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="fm-req">
+    <%= f.label :style, 'Style:' %>
+    <%= f.select :style, Tag.tag_styles %>
+  </div>
+  <% if @tag.new_record? %>
+    <div class="fm-req">
+      <%= f.label :holiday_id, 'Holiday:' %>
+      <%= f.select :holiday_id, [""]+Holiday.find(:all).map{|h| [h.title, h.id]} %>
+    </div>
+    <div class="fm-req">
+      <%= f.label :tree_node_id, 'For:' %>
+      <%= f.select :tree_node_id, [""]+TreeNode.find(:all, :conditions=>["is_question=?", false]).map{|tn| [tn.option.name, tn.id]} %>
+    </div>
+  <% else %>
+    <div class="fm-req">
+      <%= f.label :link, 'Link:' %>
+      <%= f.text_field :link %>
+    </div>
+  <% end %>
+</fieldset>
+
+<div id="fm-submit" class="fm-req">
+  <%= f.submit 'Save' %> <%= f.submit 'Save go back' %>
+</div>
+
+
+
+
+

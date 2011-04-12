@@ -1,0 +1,13 @@
+<% lock = @lock_base_locale || false %>
+
+<% if I18n.locale.to_s != "ru" %>
+  <%= link_to "ru", nil, {:onclick=>"Application.changeLocale('ru')"} %>
+<% else %>
+  <span class="selected">ru</span>
+<% end  %>
+
+<% if !lock and I18n.locale.to_s != "en" %>
+  <%= link_to "en", nil, {:onclick=>"Application.changeLocale('en')"} %>
+<% else %>
+  <span class="selected <%= 'locked' if lock %>">en</span>
+<% end  %>

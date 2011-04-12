@@ -1,0 +1,536 @@
+/************* STRUCTURE DEFINITIONS ***********/
+
+* {	margin:0;
+	padding:0;}
+.clear {
+	clear:both; 
+    height:0;
+    font-size: 1px;
+    line-height: 0px;}
+a img {border: none;}
+.center {text-align: center;}
+
+body  {
+	font: 12px  Verdana, Geneva, sans-serif;
+	line-height: 15px;
+	background: #edefee url(/images/bg.jpg) top left repeat-x;
+	padding: 25px;
+	text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
+	color: #505050;
+}
+
+
+#wrap-container { 
+	width: 100%;
+    min-height: 600px;
+	background: #FFFFFF;
+	margin: 0 auto; 
+	text-align: left; 
+	/*border: 1px solid green;*/
+	min-width: 950px;
+	width: auto !important;
+	width: 950px;
+        padding-bottom: 80px;
+} 
+
+/******************* HEADER ***************************************/
+#header { 
+	height: 72px;
+	width: 100%;
+	background:url(/images/bg-header-gradient.jpg) top left repeat-x;
+	/*border: 1px solid orange;*/
+	border-bottom: 2px solid #fff;
+} 
+	#header img {float: left; margin: 0 18px 0 22px;}
+	#header h1 a{
+				font-size: 34px;
+			    color: #FFF;
+				margin-top: 13px;
+				/*border: 1px solid red;*/
+				line-height: 50px; /*for IE7*/
+				font-weight: normal;
+				float: left;
+				text-decoration:none;
+				}
+	#rezina-header {
+		margin: 0 0 0 355px; 
+		background: url(/images/bg-header-rezina2.jpg) top left repeat-x;
+		height: 72px;
+		/*border: 1px solid red;*/}
+		#rezina-header p {
+			float: right;
+			font: 10px Verdana, Geneva, sans-serif;
+			font-weight:bold;
+			color:#FFF;
+			margin: 4px 17px 0 0;
+			display:inline; /*Hack for IE6*/}
+			#rezina-header p a {
+				font: 10px Verdana, Geneva, sans-serif;
+				font-weight:bold;
+				color:#FFF/*ebf0f5*/;
+				text-decoration:none;
+				margin: 0 2px;}
+				#rezina-header p a:hover {text-decoration: underline;}
+		
+/**************************** MAIN MENU ****************************************/		
+	#main-menu {
+		height: 25px; 
+		background: #1c3a68; 
+		text-align:center;
+		width: 100%; 
+		float: left;
+		}
+		div.menu-points {
+			/*width: 500px;*/
+			/*border: 1px solid red; */
+			text-align:center;
+			float: left;}
+		div.menu-points a {
+			display: block; 
+			float: left;
+			width: 118px;
+			height: 25px;
+			border-right: 2px solid #FFF;
+			font-size: 13px;
+			color: #FFF;
+			font-weight: bold;
+			/*letter-spacing: 1px;*/
+			text-decoration: none;
+			line-height: 23px;
+			padding: 0 5px;}
+			div.menu-points a:hover {background-color:#809cc6;}
+	form.find-form {
+		width: 207px; 
+		margin: 2px 32px 0 0;
+		float: right;
+		display:inline; /*Hack for IE6*/
+		font-size: 12px; }
+		/*padding-bottom: 7px; Hack for Opera 9
+		/*form.find-form table {} 
+		/*.find-form td {border: 1px solid green;}*/
+		input.textfield {
+			width: 178px; 
+			height: 16px; 
+			border: 1px solid #9a9a9a; 
+			line-height: 15px; 
+			padding-left: 2px; 
+			font-size: 11px;
+			margin: 0 1px 1px 0;
+			color: #505050;
+			}
+		input.submit { height: 18px;}
+		
+		
+/****************************CONTENT 2 COLUMNS **********************************/		
+#wrap-content-2cols {
+	background-color: #FFF; 
+	min-height: 698px; /* -72px footer (770) */
+	height: auto !important; 
+	height: 698px;    /*Hack for IE6*/
+	/*border: 1px solid blue;*/ 
+	float: left; 
+	width: 100%; }
+
+/*************************Left sidebar*************************************************/
+#sidebar-left {
+	float: left; 
+	display: inline; /*Hack for IE6*/
+	width: 328px; 
+	margin: 20px 0 0 18px;
+	/*border: 1px solid red;*/}
+	#sidebar-left div.welcome {
+		width: 304px;
+		/*border: 1px solid red;*/
+		font-size: 12px;}
+		.welcome p {text-align: justify; line-height:17px; }
+		.welcome p.center {text-align: center; margin: 12px 0 15px 0;}
+		.welcome p.right {text-align: right; margin: 15px 0 0 0;}
+		.welcome ul {
+			list-style-type:none;
+			/*border: 1px solid green;*/
+			margin: 2px 0 0 0;	}
+			.welcome ul li {
+				background: url(/images/bg-list.gif) left 4px no-repeat;  /*for Opera9*/
+				padding-left: 15px;
+				line-height: 17px;
+				text-align:justify;
+				margin: 2px 0 0 0;}
+
+
+/***************************** MAIN CONTENT *****************************************/
+	#mainContent { 
+		margin: 20px 20px 0 348px;
+        min-height: 500px;
+		/*border: 1px solid green;*/}
+    #mainContent h1 {
+		margin: 0 0 20px 0; 
+		text-align: center; 
+		font-size: 13px; 
+		color: #2e6190; 
+		font-weight: bold;}
+		div.news {
+			font-size: 12px; 
+			text-align:left;
+			/*float: left;*/
+			/*border: 1px solid blue;*/
+			min-height: 108px;
+			height: auto !important; 
+			height: 108px;    /*Hack for IE6*/
+			margin-bottom: 3px;	}
+			div.news h2 a {
+				font: 12px Verdana, Geneva, sans-serif; 
+				color: #2e6190; 
+				font-weight: bold;
+				text-decoration:none;}
+				div.news h2 a:hover {text-decoration: underline;}
+			div.news p.category, a.category {
+				font-size: 11px; 
+				color: #939699; 
+				/*font-weight: bold;*/
+				text-decoration:none;
+				margin: 3px 0 0 0;}
+				a.category:hover {text-decoration:underline;}
+			div.news img {
+				width: 66px;
+				height: 66px;
+				margin: 5px 14px 0 0;
+				float: left;}
+			div.news p.descr {
+				margin: 4px 0 2px 80px;
+				line-height: 16px;
+				font-size: 12px;}
+				div.news p.descr2 {
+				margin: 4px 0 2px 0;
+				line-height: 16px;
+				font-size: 12px;}
+form.rss-subscribe {
+		width: 97px; 
+		text-align: center;
+		margin: 0 auto;	}
+		input.subscribe { height: 22px;}
+		
+/************************* FOOTER ***********************************************/		
+#footer { 
+	background:#c3d3e0;
+	color: #505050;
+	float: left;
+	width: 100%;
+	height: 37px;
+	font-size: 11px;
+	line-height: 16px;
+	margin-top: 0px; /*50*/
+	} 
+#footer div.l-footer { float: left; display: inline; /*Hack for IE6*/ width: 300px; text-align:left; margin: 2px 0 0 20px;}
+#footer div.r-footer {float: right; display: inline; /*Hack for IE6*/ width: 300px; text-align:right; margin: 2px 25px 0 0;}
+
+#copyright {
+	width: 100%;
+	height: 25px;
+	/*border: 1px solid green;*/
+	float: left;
+	background:#FFFFFF;
+	padding-bottom: 15px;
+	}
+#copyright p {
+	margin-top: 5px;
+	text-align: center;
+	font-size:11px;
+	color: #505050;}
+
+
+
+/****************** PAGES WITH CATALOG ON THE LEFT SIDE *****************************************/
+#wrap-content-2cols-catalog {
+	background: url(/images/bg_subcatalog.gif) top left repeat-y; 
+	min-height: 698px; /* -72px for footer (770) */
+	height: auto !important; 
+	height: 698px;    /*Hack for IE6*/
+	/*border: 1px solid blue; */
+	float: left; 
+	width: 100%; }
+
+#sidebar-left2 {
+        overflow: hidden;
+	float: left; 
+	width: 259px; 
+	margin: 0;
+	/*border: 1px solid red;*/}
+
+#mainContent2 { 
+		margin: 18px 20px 0 280px; 
+		/*border: 1px solid green;*/
+		font: 12px Verdana, Geneva, sans-serif;
+		color: #505050;
+		min-height: 670px; 
+		height: auto !important; 
+		height: 670px;    /*Hack for IE6*/
+}
+	#mainContent2 p.breadscr {
+		color: #939699;}
+        #mainContent2 p.breadscr a{
+		color: #939699;}
+
+        #mainContent2 p span.inactivecrumb {
+            margin: 0 2px;
+		font: 11px Verdana, Geneva, sans-serif;
+		color: #939699;
+        }
+    #mainContent2 p a.breadscrumb {
+		margin: 0 2px;
+		font: 11px Verdana, Geneva, sans-serif;
+		color: #939699;
+		text-decoration:none;}
+		#mainContent2 p a.breadscrumb:hover {text-decoration: underline;}
+		
+	#mainContent2 h1 {
+		margin: 0 0 8px 0;
+		text-align: center; 
+		font-size: 13px; 
+		color: #2e6190; 
+		font-weight: bold;}
+
+table#items {    
+}
+
+
+#items th {
+    height: 40px;
+    border-left: 1px solid gray;
+    border-top: 1px solid gray;
+    background-color: #EDEFEE;
+    }
+#items td {
+    border-top: 1px solid gray;
+    border-left: 1px solid gray;
+    padding: 5px 5px 5px 5px;
+    font-size: 11px;
+}
+
+#items td.right {
+    border-right: 1px solid gray;
+    }
+
+    #items tr.last  td {
+        border-bottom: 1px solid gray;
+        }
+
+#items img {
+    height: 50px;
+}
+
+	div.product {
+			font-size: 12px; 
+			text-align:left;
+			/*float: left;*/
+			/*border: 1px solid blue;*/
+			border-top: 1px solid #cdd8e3;
+			min-height: 105px;
+			height: auto !important; 
+			height: 105px;    /*Hack for IE6*/
+			/*margin: 8px 0 0 0;*/
+			padding: 5px 0 5px 10px;}
+			div.last-product {border-bottom: 1px solid #cdd8e3;}
+			div.product h2 a {
+				font: 12px Verdana, Geneva, sans-serif; 
+				color: #2e6190; 
+				font-weight: bold;
+				text-decoration:none;
+				margin-bottom: 3px;}
+				div.product h2 a:hover {text-decoration: underline;}
+			div.product p a.category2 {
+				font-size: 11px; 
+				color: #939699; 
+				/*font-weight: bold;*/
+				text-decoration:none;
+				margin: 3px 0;}
+				div.product p a.category2:hover {text-decoration:underline;}
+			div.product img {
+				width: 95px;
+				height: 95px;
+				margin: 5px 15px 0 0;
+				float: left;
+				}
+			div.product p.descript{
+				margin: 4px 0 2px 80px;
+				line-height: 16px;
+				font: 12px Verdana, Geneva, sans-serif;
+				color: #505050;
+				text-align: left;}
+				div.product p.descript a {
+					text-decoration:none;
+					font: 12px Verdana, Geneva, sans-serif;
+					color: #505050;
+					text-align: left;}
+					div.product p.descript a:hover {text-decoration:underline;}
+				div.product p.descript2 {
+				margin: 4px 0 2px 0;
+				line-height: 16px;
+				font-size: 12px;
+				font: 12px Verdana, Geneva, sans-serif;
+				color: #505050;
+				text-align: left;}
+					div.product p.descript2 a {
+					text-decoration:none;
+					font: 12px Verdana, Geneva, sans-serif;
+					color: #505050;
+					text-align: left;}
+					div.product p.descript2 a:hover {text-decoration:underline;}
+
+/**** item page ******************/
+div.product-description {
+	/*border: 1px solid red;*/}
+	h2.product-name {
+		font: 12px Verdana, Geneva, sans-serif; 
+		color: #2e6190; 
+		font-weight: bold;
+		text-align: center;
+		margin: 2px 0 5px 0;}
+	div.product-description a.category3 {
+		font-size: 11px; 
+		color: #939699; 
+		/*font-weight: bold;*/
+		text-decoration:none;
+		margin: 2px 0;	}
+		div.product-description a.category3:hover {text-decoration:underline;}
+		div.product-description img {
+				width: 177px;
+				height: 177px;
+				margin: 5px 15px 10px 0;
+				float: left;}
+		div.product-description p.descript-full {
+				margin: 4px 0 4px 0/*190px*/;
+				line-height: 16px;
+				font: 12px Verdana, Geneva, sans-serif;
+				color: #505050;
+				text-align: justify;}
+		table.descript-table {
+				/*border: 1px solid red;*/
+				line-height: 16px;
+				font: 12px Verdana, Geneva, sans-serif;
+				color: #505050;
+				border-collapse:collapse;
+				margin: 4px 0;
+				
+				}
+				table.descript-table td {padding: 2px 0;
+                                    /*border: 1px solid blue;*/ text-align:left;
+                                    vertical-align:top;}
+
+/************* CATALOG ************************************/
+div.part-catalog {
+	float: left;
+	display:inline; /*Hack for IE6*/ 
+	width: 45%;
+	min-width: 420px;
+	margin: 20px;
+	/*border: 1px solid red;*/}
+	a.categoryheader {
+		font: 12px Verdana, Arial, Helvetica, sans-serif;
+		line-height:16px;
+		font-weight: bold;
+		color: #2e6190;
+		margin-bottom: 3px; 
+		padding: 2px 10px 0 8px;
+		text-decoration: none;
+		}
+		a.categoryheader:hover {background-color: #ebf0f5; }
+	ul.categoryitems2 {
+		list-style-type: none;
+		margin-bottom: 11px;
+		}
+	ul.categoryitems2 li{
+		background: url(/images/bg-list2.jpg) 5px 8px no-repeat; 
+		margin-left: 7px;
+		padding: 1px 10px 1px 15px;
+		padding-left: 15px; 
+		/*border: 1px solid red;*/
+		}
+
+ul.categoryitems2 li a{
+	text-decoration: none;
+	font-weight: normal;
+	font: 12px Verdana, Geneva, sans-serif;
+	color: #505050;}
+	ul.categoryitems2 li a:hover{ color: #2e6190; background-color: #ebf0f5;}
+
+/********************* PAGES WITH 1 COLUMN ***************************************/
+div.general-info-block {
+	margin: 15px 20px 20px;
+	/*border: 1px solid blue;*/
+	font: 12px Verdana, Geneva, sans-serif; 
+	min-height: 670px; 
+	height: auto !important; 
+	height: 670px;    /*Hack for IE6*/}
+	div.general-info-block h2 {
+		font: 12px Verdana, Geneva, sans-serif; 
+		color: #2e6190; 
+		font-weight: bold;
+		margin-bottom: 3px;
+		text-align:center;}
+	div.general-info-block p {
+		color: #505050;
+		margin: 4px 0 0;
+		text-align:justify;
+		line-height: 16px;}
+	div.general-info-block	ul {
+		list-style-type: none;
+		margin-bottom: 5px;
+		/*border: 1px solid red;*/
+		}
+	div.general-info-block ul li{
+		background: url(/images/bg-list2.jpg) 2px 8px no-repeat; 
+		margin-left: 7px;
+		padding: 1px 0 1px 12px;
+		padding-left: 10px; 
+		line-height: 16px;
+		/*border: 1px solid red;*/
+		}
+/************** PRICE-LIST *******************************************************/
+form.price-form {
+		width: 400px; 
+		margin: 5px 0;
+		font-size: 12px; 
+		margin: 0 auto;}
+		/*padding-bottom: 7px; Hack for Opera 9*/
+		form.price-form table {} 
+		form.price-form table td {
+			/*border: 1px solid green;*/
+			padding: 2px;
+			text-align:left;}
+		input.check {
+			/*width: 8px; */
+			margin: 0 2px;
+			}
+		input.submit2 { 
+			height: 22px;
+			width: 107px;
+			margin: 5px 0 0 130px;
+			}
+/****************************CONTENT 2 COLUMNS **********************************/
+#wrap-content-2cols-maincatalog {
+
+}
+
+.producer-container {
+    width: 200px;
+    padding: 5px 5px 5px 5px;
+}
+
+.producer-container h3 {
+    font-size: 10pt;
+    margin-bottom: 10px;
+}
+
+.producer-container li {
+    list-style-type: none;
+    margin-left: 8px;
+}
+
+
+a.category_link {
+    font: 12px Verdana, Arial, Helvetica, sans-serif;
+		font-weight: bold;
+		color: #2e6190;
+
+		text-decoration: none;
+}

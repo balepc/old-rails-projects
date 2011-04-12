@@ -1,0 +1,45 @@
+<table class="form">
+  <tr><td><%= f.label :title, "Title:" %></td><td><%= f.text_field :title %></td></tr>
+  <tr><td><%= f.label :title, "Code:" %></td><td><%= f.text_field :code %></td></tr>
+  <tr><td><%= f.label :title, "Level:" %></td><td><%= f.text_field :level %></td></tr>
+  <tr><td><%= f.label :title, "Follow after:" %></td><td><%= f.collection_select :follow_after_id, Option.find(:all, :conditions => ["level < ?", @question.level]), :id, :name, {:prompt => true} %></td></tr>
+  
+  <tr><td>&nbsp;</td><td></td></tr>
+  <tr><td><b>Options</b></td><td>&nbsp;</td><td>Tags</td></tr>
+  <tr><td>&nbsp;</td><td></td></tr>
+  
+  <% @question.options.each do |option| %>
+    <tr>
+      <td><%= option.name %></td>
+      <td><%= link_to 'delete', admin_question_option_path(@question, option), :method => :delete %></td>
+      <td>
+        <% Tag.find(:all).each do |tag| %>
+          <% unless option.tagged?(tag.name) %>
+            <%= link_to tag.name, tag_admin_question_option_path(@question, option, :tag => tag.name), :method => :post %>
+          <% else %>
+            <%= link_to tag.name, untag_admin_question_option_path(@question, option, :tag => tag.name), :method => :post, :class => 'tagged' %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+    
+  <tr><td>&nbsp;</td><td></td></tr>
+  <tr><td>#1</td><td><%= custom_text_field 'question[options_attributes][]' %></td></tr>
+  <tr><td>#1</td><td><%= custom_text_field 'question[options_attributes][]' %></td></tr>
+  <tr><td>#1</td><td><%= custom_text_field 'question[options_attributes][]' %></td></tr>
+  
+  
+  
+</table>
+
+<br/>
+<%= f.submit 'Save' %><%= f.submit 'Save go back' %>
+
+
+
+
+
+
+
+

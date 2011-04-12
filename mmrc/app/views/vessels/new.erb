@@ -1,0 +1,99 @@
+<h1>New vessel</h1>
+
+<%#= error_messages_for :vessel %>
+
+<div class="vessel-form">
+<% form_for(@vessel, :html=>{:class=>'vessel-form'}) do |form| %>
+  <fieldset>
+    <legend>General Info:</legend>
+    <ol>
+      <li><%= form.label :mmsi, "MMSI:", :title=>@vessel.errors.on(:mmsi) %><%= form.text_field :mmsi, :class=>'text' %></li>
+      <li><%= form.label :imon, 'IMON:', :title=>@vessel.errors.on(:imon) %><%= form.text_field :imon, :class=>'text' %></li>
+      <li><%= form.label :call_sign, 'Call Sign', :title=>@vessel.errors.on(:call_sign) %><%= form.text_field :call_sign, :class=>'text' %></li>
+      <li><%= form.label :ship_name, "Ship Name:", :title=>@vessel.errors.on(:ship_name) %> <%= form.text_field :ship_name %></li>
+      <li><%= form.label :ship_flag, "Flag:" %> <%= form.text_field :ship_flag %></li>
+      <li><%= form.label :ship_types, "Type of vessel:" %><%= form.select :ship_type, Vessel::TYPES %></li>
+      <li><%= form.label :dim_length, "Ship length:" %> <%= form.text_field :dim_length %></li>
+      <li><%= form.label :ship_phone, "Mobile phone:" %> <%= form.text_field :ship_phone %></li>
+      <li><%= form.label :ship_fax, "Telefax:" %> <%= form.text_field :ship_fax %></li>
+      <li><%= form.label :ship_email, "Email:" %> <%= form.text_field :ship_email %></li>
+      <li><%= form.label :inmarsat_c, "Inmarsat C:" %> <%= form.text_field :inmarsat_c %></li>
+      <li><%= form.label :inmarsat_number, "Inmarsat number:" %> <%= form.text_field :inmarsat_number %></li>
+      <li><%= form.label :other_communication, "Other communication:" %> <%= form.text_field :other_communication %></li>
+
+      <li><%= form.label :gross_tonnage, "Gross tons:" %> <%= form.text_field :gross_tonnage %></li>
+      <li><%= form.label :dra_max, "Draft (max):" %> <%= form.text_field :dra_max %></li>
+
+      <li><%= form.label :certificate_of_registry, "Certificate of registry:" %> <%= form.text_field :certificate_of_registry %></li>
+    </ol>
+  </fieldset>
+
+  <fieldset>
+    <legend>Owner:</legend>
+    <% form.fields_for :owner, @vessel.owner do |owner_form|  %>
+      <ol>
+        <li><%= owner_form.label :name, "Name:", :title=>@vessel.owner.errors.on(:name) %> <%= owner_form.text_field :name %></li>
+        <li><%= owner_form.label :email, "Email:" %> <%= owner_form.text_field :email %></li>
+        <li><%= owner_form.label :phone_number, "Phone #:" %> <%= owner_form.text_field :phone_number %></li>
+      </ol>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <legend>Manager:</legend>
+    <% form.fields_for :manager, @vessel.manager do |manager_form| %>
+      <ol>
+        <li><%= manager_form.label :name, "Name:", :title=>@vessel.owner.errors.on(:name) %> <%= manager_form.text_field :name %></li>
+        <li><%= manager_form.label :email, "Email:" %> <%= manager_form.text_field :email %></li>
+        <li><%= manager_form.label :phone_number, "Phone #:" %> <%= manager_form.text_field :phone_number %></li>
+      </ol>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <legend>Main Size[m]:</legend>
+    <ol>
+      <li><%= form.label :dim_loa, "LOA:" %> <%= form.text_field :dim_loa %></li>
+      <li><%= form.label :dim_beam, "Beam:" %> <%= form.text_field :dim_beam %></li>
+      <li><%= form.label :dim_dm, "DM:" %> <%= form.text_field :dim_dm %></li>
+    </ol>
+  </fieldset>
+
+  <fieldset>
+    <legend>Ship draughts [m]:</legend>
+    <ol>
+      <li><%= form.label :dra_fwd, "FWD:" %> <%= form.text_field :dra_fwd %></li>
+      <li><%= form.label :dra_aft, "AFT:" %> <%= form.text_field :dra_aft %></li>
+      <li><%= form.label :dra_max, "MAX:" %> <%= form.text_field :dra_max %></li>
+    </ol>
+  </fieldset>
+
+  <fieldset title="" >
+    <legend>Bunkers (R.O.B.)[mT]:</legend>
+    <ol>
+      <li><%= form.label :cap_fo, "FO:" %> <%= form.text_field :cap_fo %></li>
+      <li><%= form.label :cap_dodg, "DO/DG:" %> <%= form.text_field :cap_dodg %></li>
+      <li><%= form.label :cap_lo, "LO:" %> <%= form.text_field :cap_lo %></li>
+      <li><%= form.label :cap_fw, "FW:" %> <%= form.text_field :cap_fw %></li>
+    </ol>
+  </fieldset>
+
+  <fieldset>
+    <legend>Port control info:</legend>
+    <ol>
+      <li><%= form.label :engine_power, "Engine power [kW]:" %> <%= form.text_field :engine_power %></li>
+      <li><%= form.label :ice_class, "Ice Class:" %> <%= form.text_field :ice_class %></li>
+
+      <li><%= form.label :dim_grt, "GRT:" %> <%= form.text_field :dim_grt %></li>
+      <li><%= form.label :dim_nrt, "NRT:" %> <%= form.text_field :dim_nrt %></li>
+      <li><%= form.label :dim_sbt, "SBT:" %> <%= form.text_field :dim_sbt %></li>
+      <li><%= form.label :dim_dwt, "DWT:" %> <%= form.text_field :dim_dwt %></li>
+    </ol>
+
+  </fieldset>
+
+  <fieldset class="submit">
+    <%= submit_tag 'Continue' %>
+  </fieldset>
+<% end %>
+  </div>

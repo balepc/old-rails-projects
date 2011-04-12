@@ -1,0 +1,66 @@
+  <li><%= form.label :mmsi, "Ship Name:" %> <%= form.text_field :ship_name %></li>
+  <li><%= form.label :mmsi, "Flag:" %> <%= form.text_field :ship_flag %></li>
+  <li><%= form.label :mmsi, "Type of vessel:" %><select name="ship_types"></select></li>
+  <li><%= form.label :mmsi, "Ship length:" %> <%= form.text_field :dim_length %></li>
+  <li><%= form.label :mmsi, "Mobile phone:" %> <%= form.text_field :ship_phone %></li>
+  <li><%= form.label :mmsi, "Telefax:" %> <%= form.text_field :ship_fax %></li>
+  <li><%= form.label :mmsi, "Email:" %> <%= form.text_field :ship_email %></li>
+  <li><%= form.label :mmsi, "Inmarsat C:" %> <%= form.text_field :inmarsat_c %></li>
+  <li><%= form.label :mmsi, "Inmarsat number:" %> <%= form.text_field :inmarsat_number %></li>
+  <li><%= form.label :mmsi, "Other communication:" %> <%= form.text_field :other_communication %></li>
+
+  <li><%= form.label :mmsi, "Gross tons:" %> <%= form.text_field :gross_tonnage %></li>
+  <li><%= form.label :mmsi, "Draft (max):" %> <%= form.text_field :dra_max %></li>
+
+  <li><%= form.label :mmsi, "Certificate of registry:" %> <%= form.text_field :imon %></li>
+
+  <fieldset>
+    <legend>Owner:</legend>
+    <li><%= form.label :mmsi, "Name:" %> <%= form.text_field :imon %></li>
+    <li><%= form.label :mmsi, "Email:" %> <%= form.text_field :imon %></li>
+    <li><%= form.label :mmsi, "Address:" %> <%= form.text_field :imon %></li>
+    <li><%= form.label :mmsi, "Phone #:" %> <%= form.text_field :imon %></li>
+  </fieldset>
+
+  <fieldset>
+    <legend>Manager:</legend>
+    <li><%= form.label :mmsi, "Name:" %> <%= form.text_field :imon %></li>
+    <li><%= form.label :mmsi, "Email:" %> <%= form.text_field :imon %></li>
+    <li><%= form.label :mmsi, "Address:" %> <%= form.text_field :imon %></li>
+    <li><%= form.label :mmsi, "Phone #:" %> <%= form.text_field :imon %></li>
+  </fieldset>
+  
+  <fieldset>
+    <legend>Main Size[m]:</legend>
+    <li><%= form.label :mmsi, "LOA:" %> <%= form.text_field :dim_loa %></li>
+    <li><%= form.label :mmsi, "Beam:" %> <%= form.text_field :dim_beam %></li>
+    <li><%= form.label :mmsi, "DM:" %> <%= form.text_field :dim_dm %></li>
+  </fieldset>
+
+  <fieldset>
+    <legend>Ship draughts [m]:</legend>
+
+    <li><%= form.label :mmsi, "FWD:" %> <%= form.text_field :dra_fwd %></li>
+    <li><%= form.label :mmsi, "AFT:" %> <%= form.text_field :dra_aft %></li>
+    <li><%= form.label :mmsi, "MAX:" %> <%= form.text_field :dra_max %></li>
+  </fieldset>
+
+  <fieldset title="" >
+    <legend>Bunkers (R.O.B.)[mT]:</legend>
+    <li><%= form.label :mmsi, "FO:" %> <%= form.text_field :cap_fo %></li>
+    <li><%= form.label :mmsi, "DO/DG:" %> <%= form.text_field :cap_dodg %></li>
+    <li><%= form.label :mmsi, "LO:" %> <%= form.text_field :cap_lo %></li>
+    <li><%= form.label :mmsi, "FW:" %> <%= form.text_field :cap_fw %></li>
+  </fieldset>
+
+  <fieldset>
+    <legend>Port control info:</legend>
+
+    <li><%= form.label :mmsi, "Engine power [kW]:" %> <%= form.text_field :engine_power %></li>
+    <li><%= form.label :mmsi, "Ice Class:" %> <%= form.text_field :ice_class %></li>
+
+    <li><%= form.label :mmsi, "GRT:" %> <%= form.text_field :dim_grt %></li>
+    <li><%= form.label :mmsi, "NRT:" %> <%= form.text_field :dim_nrt %></li>
+    <li><%= form.label :mmsi, "SBT:" %> <%= form.text_field :dim_sbt %></li>
+    <li><%= form.label :mmsi, "DWT:" %> <%= form.text_field :dim_dwt %></li>
+  </fieldset>

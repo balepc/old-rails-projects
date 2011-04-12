@@ -1,0 +1,6 @@
+<div >
+  <%= error_messages_for :question %>
+  <% form_for :question, @question, :url => admin_question_path(@question), :html => {:method => :post} do |f| %>
+    <%= render :partial => 'form', :locals => {:f => f} %>
+  <% end %>
+</div>

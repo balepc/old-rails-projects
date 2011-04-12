@@ -1,0 +1,15 @@
+<%= render :partial=>'navigation' %>
+
+<h2>Security Info</h2>
+
+<center>
+  <% form_for @report, :url=>save_security_info_report_path(@report) do |form| %>
+    <fieldset>
+      <ol>
+        <li><%= form.label :cargo_description %><%= form.text_field :cargo_description, :class=>'text' %></li>
+        
+      </ol>
+    </fieldset>
+    <%= form.submit "Continue" %>
+  <% end %>
+</center>

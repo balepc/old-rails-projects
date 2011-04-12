@@ -1,0 +1,47 @@
+/***** Structure   ***********/
+body {background: #fcf1eb url(/images/admin/bg_red.gif) top left repeat-x;}
+#header {background: #9e2922;}
+div.menu a {background:#b74e48;}
+div.menu a.selected {color: #9e2922;}
+div.menu a:hover {color: #9e2922;}
+div.submenu { /*border-bottom: 5px #fcf1eb  solid;*/ }
+div.submenu a, .full-form a { color: #9e2922;}
+#footer { background: #fcf1eb;}
+
+#lang_container a:hover { background-color:  #f3dccb; }
+#lang_container a.selected, div.submenu span.selected { background: #b74e48; }
+#lang_container { background: #fcf1eb; }
+div.submenu span.locked { background:  #fcf1eb; }
+
+.page-header { background: #b74e48; }
+.page-body { border: solid 1px #b74e48; }
+
+/********** List *******************/
+table.list-table td{border: 1px solid #d4c1b3;}
+table.list-table td.table_heading {	background:#f3dccb;}
+
+/************ Dashboard **********************/
+span.widget_menu a {  color: #9e2922; }
+div.widget_content a.color_a {color: #9e2922; }
+div.widget_content ol li a:hover {color: #9e2922;}
+div.widget_3x1 {border: 1px solid #d4c1b3; }
+div.widget_3x1_header {
+		background: #f3dccb;
+		border-bottom: 1px solid #d4c1b3;
+		}
+div.widget_1x1 {border: 1px solid #d4c1b3;}
+div.widget_1x1_header {
+		background: #f3dccb;
+		border-bottom: 1px solid #d4c1b3;}
+div.widget_2x2 {border: 1px solid #d4c1b3;}
+div.widget_2x2_header {
+		background: #f3dccb;
+		border-bottom: 1px solid #d4c1b3;}
+
+
+/************ Login ****************************/
+div.login_container {border: 1px solid #d4c1b3;}
+div.login_container h2 {
+		background:#f3dccb;
+		border-bottom: 1px solid #d4c1b3;}
+table.login_table td a {color: #9e2922; }

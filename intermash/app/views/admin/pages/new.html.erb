@@ -1,0 +1,14 @@
+<% content_for :sub_menu do %>
+  <%= link_to image_tag('admin/page_text.gif')+'Назад к списку', admin_pages_path %>
+<% end %>
+
+<% content_for :lang_menu do %>
+  <% @lock_base_locale = true %>
+  <%= render :partial => "/admin/shared/lang" %>
+<% end %>
+
+<% form_for @page, :url=>admin_pages_path do |form| %>
+  <%= render :partial => 'form', :locals=>{:form=>form}  %>
+
+  <center><p><%= form.submit 'Добавить' %> <%= form.submit 'Добавить и вернуться к списку' %></p></center>
+<% end %>

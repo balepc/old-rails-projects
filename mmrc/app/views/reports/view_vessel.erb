@@ -1,0 +1,20 @@
+<%= render :partial=>'navigation' %>
+
+<h2>Vessel info</h2>
+
+<div class="vessel-info">
+  <center>
+    <form>
+      <fieldset>
+        <ul>
+          <% @report.vessel.attributes.each do |code, value| %>
+            <li><label><%= code.capitalize %></label> <input value="<%= value %>" disabled /></li>
+          <% end %>
+        </ul>
+      </fieldset>
+    </form>
+    <input type="button" onclick="window.location.href='<%= edit_vessel_report_path(@report) %>'" value="Edit vessel"/>
+    <input type="button" onclick="window.location.href='<%= voyage_information_report_path(@report) %>'" value="Continue"/>
+  </center>
+</div>
+

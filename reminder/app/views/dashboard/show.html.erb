@@ -1,0 +1,18 @@
+<!--MAIN CONTAINER--> 
+<div class="main-container">
+  <div class="left-content">
+    <%= render :partial => 'today' %>
+    <%= render :partial => 'questionarie' %>
+    <%= render :partial => 'tags' %>
+  </div>
+  
+  <div class="right-content">
+    <%= render :partial => 'items/popular' %>
+  </div>
+  
+  <br class="clear" />
+</div>
+
+<div class="other-gift-container">
+  <%= render :partial => 'items/others' %>
+</div>

@@ -1,0 +1,18 @@
+<%= 
+  link_to_function "#{qt.option.name} +" do |page|
+    page["#qt_block"].html(render(:partial => 'qt_actions', :locals => {:qt => qt}))
+  end
+%>
+
+<ul>
+  <% qt.children.each do |sub_option| %>
+    <li><%= render :partial => 'admin/questions_tree/option', :locals => {:qt => sub_option} %></li>
+  <% end %>
+
+<%= 
+  link_to_function 'Добавить ...' do |page|
+    page["#qt_block"].html(render(:partial => 'qt_actions', :locals => {:parent => qt}))
+  end
+%>
+</ul>
+

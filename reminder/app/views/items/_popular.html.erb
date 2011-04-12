@@ -1,0 +1,47 @@
+<div class="popular-gifts">
+  <img class="name-most-popular-gifts" alt="Самые популярные подарки" src="/images/bg-most-popular-gifts.gif"/>
+  <div class="filter-block">
+    <% form_tag dashboard_path, :method => :get do -%>
+      <table><tr>
+          <td>Фильтровать по:</td>
+          <td><label>цене</label></td>
+          <td>
+            <select name="price_category_id" class="filter-field" onchange="submit()" >
+              <option value="">показать все</option>
+              <% @price_categories.each do |category| %>
+                <option value="<%= category.id %>" <%= 'selected' if category.id == params[:price_category_id].to_i  %>  ><%= category.title %></option>
+              <% end %>
+            </select>
+          </td>
+          <td><label>категории</label></td>
+          <td>
+            <select name="category_id" class="filter-field" onchange="submit()" >
+              <option value="">показать все</option>
+              <% @categories.each do |category| %>
+                <option value="<%= category.id %>" <%= 'selected' if category.id == params[:category_id].to_i  %>  ><%= category.title %></option>
+              <% end %>
+            </select>
+          </td>
+          <td>
+            <%= link_to 'x', '/', :style=>'margin-left: 20px;' %>
+          </td>
+      </tr></table>
+    <% end %>
+  </div>
+  <% @items.each do |item_hash| %>
+    <% item = item_hash[:item] %>
+    <div class="gift">
+      <%= link_to image_tag(item.assets.default[0].public_filename(:big_square)), item_path(item), :class => 'pop-gift-img' unless item.assets.empty? %>
+      <h4><%= link_to item.title, item_path(item)  %></h4>
+      <p><%=  item.brief_description %></p>
+      <p><strong>Цена:&nbsp;</strong> <%= item.price %> <%= item.currency.code if item.currency  %></p>
+    </div>
+  <% end %>
+  
+  
+  <%= will_paginate @items, :previous_label => '«', :next_label => '»' %>
+  <% if @items.size > 8 %>
+    <div class="all"><%= link_to 'хочу больше !', items_path(:holiday_id=>session[:holiday_id], :tree_node_id=>session[:tree_node_id]) %></div>
+  <% end %>
+    
+</div>

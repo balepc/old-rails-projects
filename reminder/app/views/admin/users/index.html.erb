@@ -1,0 +1,25 @@
+<table width="100%" class="grid">
+  <tr>
+    <th>Login</th>
+    <th>Email</th>
+    <th>Country</th>
+    
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+  </tr>
+  
+  <% @users.each do |user| %>
+    <tr class="<%= cycle('odd', 'even')  %>" >
+      <td align=right><%= user.login %></td>
+      <td><%= user.email %></td>
+      <td><%= user.country %></td>
+    
+      <td><%= link_to 'block', '#' %></td>
+      <td><%= link_to 'edit', '#' %></td>
+      <td><%= link_to 'remove', '#', :method => :delete, :confirm => 'Do you really want to continue?' %></td>
+      <td><%= link_to 'view actions', '#' %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,29 @@
+<% content_for :sub_menu do %>
+  <ul>
+    <li><%= link_to 'Options', admin_options_path %></li>
+  </ul>
+<% end %>
+
+<table width="100%" class="grid">
+  <tr>
+    <th>Question</th>
+    <th>Code</th>
+    <th>Level</th>
+    <th>Follow after</th>
+    
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+  </tr>
+  
+  <% @questions.each do |question| %>
+    <tr class="<%= cycle('odd', 'even')  %>" >
+      <td><%= question.title %></td>
+      <td><%= question.code %></td>
+      <td><%= question.level %></td>
+      <td><%= question.follow_after.name if question.follow_after %></td>
+      
+      <td><%= link_to 'edit', edit_admin_question_path(question) %></td>
+      <td><%= link_to 'remove', admin_question_path(question), :method => :delete, :confirm => 'Do you really want to continue?' %></td>
+    </tr>
+  <% end %>
+</table>

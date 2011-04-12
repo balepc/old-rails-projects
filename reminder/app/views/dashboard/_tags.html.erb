@@ -1,0 +1,8 @@
+<% unless @tags.empty? %>
+  <div class="tags_container">
+    <h2>Быстрый переход</h2>  
+    <% @tags.each do |tag| %>
+      <%= link_to tag.name, tag.link, :class => tag_style(tag) %>
+    <% end %>
+  </div>
+<% end %>

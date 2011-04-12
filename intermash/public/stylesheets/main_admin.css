@@ -1,0 +1,485 @@
+* {margin:0; padding: 0;}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;}
+.clear {
+    clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;}
+.floatRight {float: right;}
+.floatLeft {float: left;}
+
+a img {border: none; }
+
+table.list-table {
+    width: 100%;
+}
+
+table.list-table td{
+    /*border: 1px solid #bacde9;*/
+    font-size: 11px;
+    color:#000;
+    padding: 3px 5px;
+    text-align:left;
+    vertical-align:middle;
+}
+
+td.px55 {
+    width: 55px;
+    max-width: 55px;
+}
+
+td.px225 {
+    width: 225px;
+    max-width: 225px;
+}
+
+td.px260 {
+    width: 260px;
+    max-width: 260px;
+}
+
+td.px300 {
+    width: 200px;
+    max-width: 200px;
+}
+
+td.px170 {
+    width: 170px;
+}
+
+td.px120 {
+    width: 120px;
+    max-width: 120px;
+}
+
+td.px20 {
+    width: 20px;
+    max-width: 20px;
+}
+
+td.px75 {
+    width: 75px;
+    max-width: 75px;
+}
+td.px400 {
+    width: 330px;
+}
+
+input.check {margin: 0 2px;}
+input.px225 {width: 225px; }
+input.px120, select.px120 {width: 120px;}
+input.px170, select.px170 {width: 170px;}
+input.px300, select.px300 {width: 300px;}
+input.px400, select.px400 {width: 400px;}
+input.px75, select.px75 {width: 75px;}
+input.px55, select.px55, input.button {width: 55px;}
+input.px20   {width: 20px;}
+
+button.px90 {width:90px;}
+
+
+table.list-table td.table_heading {
+    /*background:#dcedff;*/
+    color: #000;
+    text-align:center;
+    padding: 5px 0;
+    font-size: 11px;
+    font-weight:bold;
+    vertical-align:middle;}
+table.list-table td.table_heading span {float: left; padding: 3px 5px 3px 16px; }
+table.list-table td.table_heading a img {
+    /*border: 1px solid red;*/
+    float: left;
+    margin: 7px 0 0 0;}
+
+table.list-table td.filter {
+    padding: 3px;
+    text-align:center;
+    vertical-align:middle;}
+
+table.list-table td.num {
+    text-align: right;
+}
+
+span.red {color:#fb1c1c;}
+span.green {color:#029c4e;}
+
+table.list-table td.td_img {text-align: center;}
+
+table.list-table tr.grey {background: #f6f7f7;}
+/***************** Pagination ******************************/
+div.pagination {
+    margin: 7px 0;
+    
+    width: 180px;
+/*border: 1px solid green;*/}
+div.pagination a img {margin: 3px; float: left;}
+
+div.pagination form {float: left;}
+div.pagination form input {
+    width: 30px;
+    height: 12px;
+    font-size: 11px;
+    }
+
+
+img.small_image {
+    width: 50px;
+    height: 38px;
+}
+
+/******************/
+td.table_checkcol {
+    width: 28px;
+    text-align: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+td.table_linkcol {
+    width: 50px;
+    text-align: center;
+}
+
+* {margin:0; padding: 0;}
+.clear {
+	clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;}
+.floatRight {float: right;}
+.floatLeft {float: left;}
+.center {text-align: center;}
+a img {border: none; }
+
+body {
+	font: 11px Verdana, Arial, Helvetica, sans-serif;
+	/*background: #eef7ff url(/images/admin/bg_blue.gif) top left repeat-x;*/
+	text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
+	color: #000000;
+}
+
+#container {
+	width: 980px;
+	background: #FFFFFF;
+	margin: 0 auto;
+	text-align: left;
+}
+
+
+#header {
+	/*background: #004fa2;*/
+	color: #FFF;
+	text-align: left;
+	padding-top: 15px;
+	float: left;
+	width: 980px;
+	min-height: 67px;
+	height: auto !important;
+	height: 67px;
+
+}
+td.logout a {
+    color: white;
+}
+	#header h1 a{
+		font-size: 20px;
+		font-weight: normal;
+		margin: 0 0 0 5px;
+		color: #FFF;
+		text-decoration:none;
+        }
+#header h1 {
+    font-size: 20px;
+		font-weight: normal;
+		margin: 0 0 0 5px;
+		color: #FFF;
+		text-decoration:none;
+}
+	#header h1.welcome {
+		text-align: center;
+		}
+	div.menu {
+		margin-top: 14px;
+		float: left;
+		width: 980px;}
+		div.menu a {
+			display:block;
+			float: left;
+			padding: 7px 8px;
+			margin-right: 5px;
+			font-size: 12px;
+			font-weight:bold;
+			color:#FFF;
+			text-decoration:none;
+			/*background:#025dc5;*/
+			}
+			div.menu a:hover {
+				background:#FFF;
+				/*color: #004fa2;*/}
+            div.menu a.selected {
+				background:#FFF;
+            }
+            div.menu a.logout {
+                float: right;
+                margin-right: 0px;
+            }
+
+	div.submenu {
+		width: 980px;
+		background:#FFF;
+		float: left;
+		padding: 7px 0 0 0;
+		/*border-bottom: 5px #eef7ff  solid; */}
+		div.submenu a, div.submenu span.selected {
+			font-size: 12px;
+			text-decoration:none;
+			/*color: #004fa2;*/
+			font-weight:normal;
+			margin: 0 2px 0 10px;
+			/*border: 1px solid red;*/
+			display: inline;
+			float: left;
+			height:18px;
+			}
+			div.submenu a img {/*border: 1px solid green;*/ float: left; margin: -1px 3px 0 0; width: 16px;}
+
+
+#mainContent {
+	padding: 10px; /* remember that padding is the space inside the div box and margin is the space outside the div box */
+	background: #FFFFFF;
+    min-height: 450px;
+}
+
+
+
+#footer {
+	padding: 5px 10px;
+	/*background: #eef7ff;*/
+}
+	#footer p {
+		margin: 0; /* zeroing the margins of the first element in the footer will avoid the possibility of margin collapse - a space between divs */
+		text-align:right;
+	}
+
+/************************* LANG **************/
+
+#lang_wrapper {
+    clear: both;
+    padding-top: 5px;
+}
+
+#lang_container {
+    min-height: 7px;
+    height: auto !important;
+    height: 7px;
+}
+
+#lang_container a, div.submenu span.selected {
+    padding: 4px 15px;
+    margin: 0 !important;
+    color: black;
+    font-weight: bold;
+}
+
+#lang_container a.selected, div.submenu span.selected {
+    color: white;   
+}
+
+div.submenu span.locked {
+    color: silver;
+}
+
+* {margin:0; padding: 0;}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;}
+.clear {
+    clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;}
+.floatRight {float: right;}
+.floatLeft {float: left;}
+
+a img {border: none; }
+table.form_table  td.vert_align_top {vertical-align: top;}
+
+table.form_table {
+    margin: 10px auto 20px;
+}
+table.form_table td{
+    /*border: 1px solid #bacde9;*/
+    font-size: 12px;
+    color:#000;
+    padding: 3px 5px;
+    text-align:left;
+    vertical-align: middle;
+    }
+
+table.form_table td label {
+    width: 85px;
+    margin-top: 2px;
+/*border: 1px solid red;*/}
+table.form_table td label.label_px30 {width: 50px; margin-right: 10px; float: left; margin-top: 1px;}
+
+table.form_table td input, table.form_table td textarea{
+    width: 250px;
+    line-height: 20px;}
+
+table.form_table td select {
+    width: 254px;
+    line-height: 20px;}
+
+table.form_table td input.input_date {
+    width: 98px;
+    line-height: 20px;
+    float: left;
+}
+
+img.ui-datepicker-trigger {
+    float: left;
+    margin: 2px 0 0 3px;
+}
+
+table.form_table td input.check {width: 20px; margin-right: 2px; float: left;}
+
+table.form_table td input.short {
+    width: 150px;
+}
+table.form_table td input.remove {
+}
+
+hr {
+    width: 1px; overflow:hidden;
+    border: 1px solid #e9e9e9;
+    width: 337px;
+    margin: 12px 0;
+}
+
+table.form_table td input.button {
+    width: 100px;
+    margin: 10px 0 0 60px;}
+
+.fieldWithErrors input {
+    border: 1px solid red;
+}
+
+.fieldWithErrors textarea {
+    border: 1px solid red;
+}
+
+.fieldWithErrors select {
+    border: 1px solid red;
+}
+
+.fieldWithErrors label {
+    color: red;
+    font-weight: bold;
+    cursor: help;
+}
+
+/******************** STANDARDS ***************/
+
+.standard-selected {
+	background: yellow;
+}
+#standard_container h3 {
+	padding-top: 10px;
+	font-weight: normal;
+}
+#standard_container {
+	line-height: 1.5em;
+}
+#standard_container a {
+	white-space: nowrap;
+}
+
+/************ PAGES FORM *************/
+
+#mce-container {
+    padding:10px;
+}
+
+.page-block {
+    margin-bottom:2px;
+}
+
+.page-header {
+    height: 18px;
+    color: white;
+    font-weight: bold;
+    padding: 2px 2px 0 5px;
+    cursor: pointer;
+}
+
+.page-block ul {
+    margin-left: 20px;
+}
+
+.page-body {
+    display: none;
+    padding: 5px;
+}
+
+/************** FULL-FORM ************/
+table.full-form {
+    width: 100%;
+}
+
+table.full-form hr {
+    width: 100%;
+}
+
+tr.full-row {
+}
+
+tr.full-row td.label {
+}
+
+tr.full-row td.label br {
+    line-height: 9px;
+}
+
+tr.full-row td {
+    padding-right: 10px;
+    padding-bottom: 5px;
+    vertical-align: top;
+}
+
+tr.full-row select, tr.full-row input, tr.full-row textarea {
+    width: 100%;
+    border: solid 1px silver;
+}
+
+td.form-controls {
+    text-align: center;
+}
+td.form-controls input {
+    padding: 2px 20px;
+}
+
+/************************ ATTRIBUTES ****************/
+
+#custom_attributes {
+    width: 100%;
+}
+#custom_attributes th {
+    background: #f0f0ee;
+}
+
+
+#custom_documents {
+    width: 100%;
+}
+#custom_documents th {
+    background: #f0f0ee;
+}
+
+#custom_accessories {
+    width: 100%;
+}
+#custom_accessories th {
+    background: #f0f0ee;
+}

@@ -1,0 +1,6 @@
+<%# already_saved = !@category.new_record? %>
+<%= hint_for @country, :name %>
+<tr class="full-row">
+  <td class="label"><%= form.label :name, "Название", :title=>@country.errors.on(:name) %></td>
+  <td><%= form.text_field field_value("name") %></td>
+</tr>

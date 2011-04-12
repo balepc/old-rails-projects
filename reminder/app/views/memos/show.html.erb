@@ -1,0 +1,20 @@
+<%= @memo.memo_date %>
+<% if @memo.is_birthday? %>
+  День рождения <%= @memo.title %>
+
+
+  <h3>Этому человеку вы дарили:</h3>
+
+  <h3>Этому человеку понравиться:</h3>
+
+  <h3>Мы советуем подарить:</h3>
+
+  <div id="other_items">
+    <%= render :partial => 'items/other_items' %>
+  </div>
+<% else %>
+  <%= @memo.title %><br/>
+  <%= @memo.description %><br/>
+<% end %>
+
+<%= link_to 'Удалить это событие', memo_path(@memo), :method => :delete, :confirm => 'Вы действительно этого хотите :) ?' %>

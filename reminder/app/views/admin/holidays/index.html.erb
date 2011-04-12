@@ -1,0 +1,27 @@
+<% content_for :sub_menu do %>
+  <ul>
+    <li><%= link_to 'New holiday', new_admin_holiday_path %></li>
+  </ul>
+<% end %>
+
+<table width="100%" class="grid">
+  <tr>
+    <th>Title</th>
+    <th>Day</th>
+    <th>Month</th>
+    
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+  </tr>
+  
+  <% @holidays.each do |holiday| %>
+    <tr class="<%= cycle('odd', 'even')  %>" >
+      <td align=right><%= holiday.title %></td>
+      <td><%= holiday.day %></td>
+      <td><%= holiday.month %></td>
+      
+      <td><%= link_to 'edit', edit_admin_holiday_path(holiday) %></td>
+      <td><%= link_to 'remove', admin_holiday_path(holiday), :method => :delete, :confirm => 'Do you really want to continue?' %></td>
+    </tr>
+  <% end %>
+</table>

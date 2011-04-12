@@ -1,0 +1,7 @@
+<% if event.holiday and not event.holiday.filename.blank? %>
+  <%= link_to image_tag(event.holiday.public_filename(:standart), :class => 'a-gallery', :alt => event.title), event_path(event) %>
+<% elsif event.memo and !event.memo.filename.blank? %>
+  <%= link_to image_tag(event.memo.public_filename(:standart), :class => 'a-gallery', :alt => event.title), event_path(event) %>    
+<% else %>
+  <%= link_to image_tag('event2.jpg', :alt => event.title, :class=>"a-gallery"), event_path(event) %>
+<% end %>

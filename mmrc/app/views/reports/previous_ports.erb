@@ -1,0 +1,17 @@
+<%= render :partial=>'navigation' %>
+
+<h2>Previous Ports</h2>
+
+<center>
+  <% form_for @report, :url=>save_previous_ports_report_path(@report) do |form| %>
+    <fieldset>
+      <ol id="previous_ports">
+        <% @report.previous_ports.each do |port| %>
+          <li><%= form.label :port_id %><%= select_tag 'report[previous_port_ids][]', options_for_select([""]+Port.find(:all).map{|p| [p.name, p.id]}, port.id) %> <a href="javascript:;" onclick="$(this).parent().remove();" >X</a></li>
+        <% end %>
+        <li><%= form.label :port_id %><%= select_tag 'report[previous_port_ids][]', options_for_select([""]+Port.find(:all).map{|p| [p.name, p.id]}), :onchange=>'$(this).parent().clone(false).appendTo($("#previous_ports"));' %> <a href="javascript:;" onclick="$(this).parent().remove();" >X</a></li>
+      </ol>
+    </fieldset>
+    <%= form.submit "Continue" %>
+  <% end %>
+</center>

@@ -1,0 +1,148 @@
+* {margin:0; padding: 0;}
+.clear {
+	clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;}
+.floatRight {float: right;}
+.floatLeft {float: left;}
+.center {text-align: center;}
+a img {border: none; }
+
+body {
+	font: 11px Verdana, Arial, Helvetica, sans-serif;
+	/*background: #eef7ff url(/images/admin/bg_blue.gif) top left repeat-x;*/
+	text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
+	color: #000000;
+}
+
+#container {
+	width: 980px;
+	background: #FFFFFF;
+	margin: 0 auto;
+	text-align: left;
+}
+
+
+#header {
+	/*background: #004fa2;*/
+	color: #FFF;
+	text-align: left;
+	padding-top: 15px;
+	float: left;
+	width: 980px;
+	min-height: 67px;
+	height: auto !important;
+	height: 67px;
+
+}
+td.logout a {
+    color: white;
+}
+	#header h1 a{
+		font-size: 20px;
+		font-weight: normal;
+		margin: 0 0 0 5px;
+		color: #FFF;
+		text-decoration:none;
+        }
+#header h1 {
+    font-size: 20px;
+		font-weight: normal;
+		margin: 0 0 0 5px;
+		color: #FFF;
+		text-decoration:none;
+}
+	#header h1.welcome {
+		text-align: center;
+		}
+	div.menu {
+		margin-top: 14px;
+		float: left;
+		width: 980px;}
+		div.menu a {
+			display:block;
+			float: left;
+			padding: 7px 8px;
+			margin-right: 5px;
+			font-size: 12px;
+			font-weight:bold;
+			color:#FFF;
+			text-decoration:none;
+			/*background:#025dc5;*/
+			}
+			div.menu a:hover {
+				background:#FFF;
+				/*color: #004fa2;*/}
+            div.menu a.selected {
+				background:#FFF;
+            }
+            div.menu a.logout {
+                float: right;
+                margin-right: 0px;
+            }
+
+	div.submenu {
+		width: 980px;
+		background:#FFF;
+		float: left;
+		padding: 7px 0 0 0;
+		/*border-bottom: 5px #eef7ff  solid; */}
+		div.submenu a, div.submenu span.selected {
+			font-size: 12px;
+			text-decoration:none;
+			/*color: #004fa2;*/
+			font-weight:normal;
+			margin: 0 2px 0 10px;
+			/*border: 1px solid red;*/
+			display: inline;
+			float: left;
+			height:18px;
+			}
+			div.submenu a img {/*border: 1px solid green;*/ float: left; margin: -1px 3px 0 0; width: 16px;}
+
+
+#mainContent {
+	padding: 10px; /* remember that padding is the space inside the div box and margin is the space outside the div box */
+	background: #FFFFFF;
+    min-height: 450px;
+}
+
+
+
+#footer {
+	padding: 5px 10px;
+	/*background: #eef7ff;*/
+}
+	#footer p {
+		margin: 0; /* zeroing the margins of the first element in the footer will avoid the possibility of margin collapse - a space between divs */
+		text-align:right;
+	}
+
+/************************* LANG **************/
+
+#lang_wrapper {
+    clear: both;
+    padding-top: 5px;
+}
+
+#lang_container {
+    min-height: 7px;
+    height: auto !important;
+    height: 7px;
+}
+
+#lang_container a, div.submenu span.selected {
+    padding: 4px 15px;
+    margin: 0 !important;
+    color: black;
+    font-weight: bold;
+}
+
+#lang_container a.selected, div.submenu span.selected {
+    color: white;   
+}
+
+div.submenu span.locked {
+    color: silver;
+}

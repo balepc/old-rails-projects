@@ -1,0 +1,10 @@
+<%# already_saved = !@category.new_record? %>
+<tr class="full-row">
+  <td class="label"><%= form.label :name, "Название", :title=>@pricelist.errors.on(:name) %></td>
+  <td><%= form.text_field field_value("name") %></td>
+</tr>
+
+<tr class="full-row">
+  <td class="label"><%= form.label :pricelist, "Файл", :title=>@pricelist.errors.on(:pricelist_file_name) %></td>
+  <td><%= form.file_field field_value("pricelist") %></td>
+</tr>

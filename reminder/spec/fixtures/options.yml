@@ -1,0 +1,29 @@
+1: 
+  id: 1
+  name: New Year
+  option_type: reason
+
+2: 
+  id: 2
+  name: Birthday
+  option_type: reason 
+
+3:
+  id: 3
+  name: Christmas
+  option_type: reason
+
+4:
+  id: 4
+  name: Child
+  option_type: person
+
+5:
+  id: 5
+  name: Mother
+  option_type: person
+
+6:
+  id: 6
+  name: Father
+  option_type: person

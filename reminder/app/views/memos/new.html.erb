@@ -1,0 +1,42 @@
+<%= stylesheet_link_tag "/javascripts/jscalendar-1.0/calendar-win2k-cold-1.css" %>
+<%= javascript_include_tag "jscalendar-1.0/calendar.js" %>
+<%= javascript_include_tag "jscalendar-1.0/lang/calendar-en.js" %>
+<%= javascript_include_tag "jscalendar-1.0/calendar-setup.js" %>
+
+<div class="authorization-form-wrap">    
+  <div class="adv-block"></div>
+  <div class="reminder-container">
+    <h2>Создать напоминание</h2>
+    <%= link_to 'День рождения', '#', :onclick => "$('#birthday').show(); $('#just_event').hide(); return false;" %> | <%= link_to 'Другое событие', '#', :onclick => "$('#just_event').show(); $('#birthday').hide(); return false;" %>
+            
+    <div id="birthday">
+      <% form_for :memo, @memo, :url => memo_path(@memo), :html => {:class => 'autho2', :multipart => true} do |f| %>
+        <fieldset>
+          <%= f.hidden_field :recurring, :value => true %>
+          <%= f.hidden_field :is_birthday, :value => true %>
+          <%= f.label :title, 'Имя'  %> <%= f.text_field :title, :class => 'textfield' %>
+          <%= f.label :memo_date, 'Дата рождения'  %> <%= date_select :memo, :memo_date, { :class => 'textfield', :id => 'memo_memo_date_trigger_birthday'} %><br/>
+          <%= f.label :filename, 'Фото друга'  %> <%= f.file_field :uploaded_data, { :class => 'textfield'} %><br/>
+          <p><%= f.submit 'Создать', :class => 'submit-reset' %></p>
+        </fieldset>
+      <% end %>
+    </div>
+    
+    <div id="just_event" style="display:none;" >
+      <% form_for :memo, @memo, :url => memo_path(@memo), :html => {:class => 'autho2', :multipart => true} do |f| %>
+        <fieldset>
+          <%= f.label :title, 'Событие'  %> <%= f.text_field :title, :class => 'textfield' %>
+          <%= f.label :memo_date, 'Дата'  %> <%= date_select :memo, :memo_date, { :class => 'textfield', :id => 'memo_memo_date_trigger_casual'} %><br/>
+          <%= f.label :description, 'Сообщение'  %> <%= f.text_area :description, :value => 'текст напоминания...', :rows => 10, :cols => 30  %><br/>
+          <%= f.label :filename, 'Картинка'  %> <%= f.file_field :uploaded_data, { :class => 'textfield'} %><br/>
+          <%= f.label :recurring, 'Повторяющееся событие'  %> <%= f.check_box :recurring, { :class => 'textfield'} %><br/>
+          <p><%= f.submit 'Создать', :class => 'submit-reset' %></p>
+        </fieldset>
+      <% end %>
+    </div>
+    
+  </div>
+</div>
+
+<br/>
+<br/>

@@ -1,0 +1,40 @@
+<center style="margin-top: 50px;">
+  <div class="login_container">
+
+    <h2>Авторизация</h2>
+
+    <% form_tag session_path do -%>
+      <table class="login_table">
+        <col width="95px" />
+        <col width="180px" />
+        <tr>
+          <td colspan="2" style="text-align: center; color: #CC0000;"><%= flash[:notice] %></td>
+        </tr>
+        <tr>
+          <td><label>Логин:</label></td>
+          <td><%= text_field_tag 'login', @login %></td>
+
+        </tr>
+        <tr>
+          <td><label>Пароль:</label></td>
+          <td><%= password_field_tag 'password', nil %></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>
+            <%#*<input type="checkbox" class="check" disabled/><label class="label_px30">Remember me</label>%>
+          </td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>
+            <input type="submit" value="Войти" class="button" />
+            <input type="reset" value="Отмена" class="button" />
+          </td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+</center>
+
+<br class="clear" />

@@ -1,0 +1,12 @@
+<%# already_saved = !@category.new_record? %>
+<%= hint_for @company, :name %>
+<tr class="full-row">
+  <td class="label"><%= form.label :name, "Название", :title=>@company.errors.on(:name) %></td>
+  <td><%= form.text_field field_value("name") %></td>
+</tr>
+
+<%= hint_for @company, :www %>
+<tr class="full-row">
+  <td class="label"><%= form.label :www, "WWW", :title=>@company.errors.on(:www) %></td>
+  <td><%= form.text_field :www %></td>
+</tr>

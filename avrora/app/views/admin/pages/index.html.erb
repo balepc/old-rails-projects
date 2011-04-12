@@ -1,0 +1,31 @@
+<%# content_for :sub_menu do %>
+  <%#= link_to image_tag('admin/page_new.gif')+'Add new page', new_admin_page_path %>
+<%# end %>
+
+<% content_for :lang_menu do %>
+  <%= render :partial => "/admin/shared/lang" %>
+<% end %>
+
+<div id="pages-container">
+  <% @pages.each do |page| %>
+    <div class="page-block">
+      <div class="page-header">
+        <div style="float: right">
+          <%= link_to image_tag('admin/application_form_edit.png', :title=>'Редактировать текст'),
+            edit_admin_page_path(page), :onclick=>"event.stopPropagation()" %>
+        </div>
+        <%= page_type_list[page.page_type] %>
+      </div>
+      <div class="page-body"><%= page.body %></div>
+    </div>
+  <% end %>
+  
+</div>
+
+<script type="text/javascript">
+  $().ready(function () {
+    $(".page-header").click(function () {
+      $(this).siblings(".page-body").toggle();
+    })
+  });
+</script>

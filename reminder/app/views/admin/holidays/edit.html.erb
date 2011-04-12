@@ -1,0 +1,12 @@
+<% content_for :sub_menu do %>
+  <ul>
+    <li><%= link_to 'New holiday', new_admin_holiday_path %></li>
+  </ul>
+<% end %>
+
+<div >
+  <%= error_messages_for :holiday %>
+  <% form_for :holiday, @holiday, :url => admin_holiday_path(@holiday), :html => {:method => :put, :multipart => true} do |f| %>
+    <%= render :partial => 'form', :locals => {:f => f} %>
+  <% end %>
+</div>

@@ -1,0 +1,20 @@
+<% content_for :sub_menu do %>
+  <ul>
+    <li><%= link_to 'Selected items', items_admin_statistics_path %></li>
+    <li><%= link_to 'User selections', selection_admin_statistics_path %></li>
+  </ul>
+<% end %>
+
+<table width="100%" class="grid">
+  <tr>
+    <th>Name</th>
+    <th>Selection count</th>
+  </tr>
+  
+  <% @options.each do |option| %>
+    <tr class="<%= cycle('odd', 'even')  %>" >
+      <td align=right><%= option.name %></td>
+      <td><%= option.selection_count %></td>
+    </tr>
+  <% end %>
+</table>

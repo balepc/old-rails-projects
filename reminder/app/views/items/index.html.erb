@@ -1,0 +1,47 @@
+<div class="popular-gifts2">
+  <h2 class="pop-gifts"><%= @title %></h2>
+  
+  <div class="filter-block2">
+    <% form_tag dashboard_path, :method => :get do -%>
+      <table><tr>
+          <td>Фильтровать по:</td>
+          <td><label>цене</label></td>
+          <td>
+            <select name="price_category_id" class="filter-field" onchange="submit()" >
+              <option value="">показать все</option>
+              <% @price_categories.each do |category| %>
+                <option value="<%= category.id %>" <%= 'selected' if category.id == params[:price_category_id].to_i  %>  ><%= category.title %></option>
+              <% end %>
+            </select>
+          </td>
+          <td><label>категории</label></td>
+          <td>
+            <select name="price_category_id" class="filter-field" onchange="submit()" >
+              <option value="">показать все</option>
+              <% @price_categories.each do |category| %>
+                <option value="<%= category.id %>" <%= 'selected' if category.id == params[:price_category_id].to_i  %>  ><%= category.title %></option>
+              <% end %>
+            </select>
+          </td>
+      </tr></table>
+    <% end %>
+  </div>
+  
+  <% @items.each do |item_h| %>
+    <% item = item_h[:item] %>
+    <div class="gift2">
+      <%= link_to image_tag(item.assets.default[0].public_filename(:big_square)), item_path(item), :class => 'pop-gift-img' unless item.assets.empty? %>
+      <h4><%= link_to item.title, item_path(item)  %></h4>
+      <p><%= item.brief_description %></p>
+      <p><strong>Цена:&nbsp;</strong> <%= item.price %> <%= item.currency.code if item.currency  %></p>
+    </div>
+  <% end %>
+        
+</div>
+
+<div class="pagination2">
+  <div><a href="" class="pagination-larrow"></a></div>
+  <div class="a-pages"><a href="">1</a> | <a href="">2</a> | <a href="">3</a> | <a href="">4</a></div>
+  <div><a href="" class="pagination-rarrow"></a></div>
+</div>
+<br class="clear" />

@@ -1,0 +1,5 @@
+<%# already_saved = !@category.new_record? %>
+<tr class="full-row">
+  <td class="label"><%= form.label :name, "Название", :title=>@currency.errors.on(:name) %></td>
+  <td><%= form.text_field :name %></td>
+</tr>

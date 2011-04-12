@@ -1,0 +1,23 @@
+<% content_for :sub_menu do %>
+  <%= link_to image_tag('admin/page_text.gif')+'Назад к списку', admin_items_path %>
+<% end %>
+
+<% content_for :lang_menu do %>
+  <% @lock_base_locale = true %>
+  <%= render :partial => "/admin/shared/lang" %>
+<% end %>
+
+<% form_for :item, @item, :url=>admin_items_path do |form| %>
+  <table class="full-form">
+    <colgroup width="100" />
+
+    <%= render :partial => 'form', :locals=>{:form=>form}  %>
+
+    <tr>
+      <td colspan="2" class="form-controls">
+        <hr />
+        <%= form.submit 'Добавить' %> <%= form.submit 'Добавить и вернуться к другим продуктам' %>
+      </td>
+    </tr>
+  </table>
+<% end %>

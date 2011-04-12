@@ -1,0 +1,7 @@
+<%= link_to "#{qt.option.name} #{'<b>+</b>' unless qt.children.empty?}", dashboard_path(:tree_node_id=>qt.id) %>
+
+<ul>
+  <% qt.children.each do |sub_option| %>
+    <li><%= render :partial => 'option', :locals => {:qt => sub_option} %></li>
+  <% end %>
+</ul>

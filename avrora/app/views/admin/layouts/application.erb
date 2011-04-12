@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <%= javascript_include_tag 'jquery-1.3.2.min', 'jquery.cookie', 'admin/application', 'admin/jquery-form', 'admin/item', :cache=>true %>
+    <%= javascript_include_tag 'tiny_mce/tiny_mce'  %>
+    <%= stylesheet_link_tag 'admin/list', 'admin/structure', 'admin/form', :cache=>'main_admin' %>
+    <%= stylesheet_link_tag "admin/colors/color_#{session[:theme] || cookies[:theme] || 'blue'}"  %>
+
+    <title><%= (html_title = yield :html_title) ? html_title : "#{controller.site_name}" %></title>
+
+    <%= yield(:header) %>
+  </head>
+
+  <body>
+<%#= debug session %>
+    <div id="container">
+      <div id="header">
+        <table width="100%">
+          <tr>
+            <td>
+              <% if login_page? %>
+                <h1 class="welcome"><a href="/admin">Web интерфейс администратора Машпромэкспорт</a></h1>
+              <% else %>
+                <h1><a href="/admin">Web интерфейс администратора Машпромэкспорт</a><%= " - #{controller.title}" if controller.title %></h1>
+              <% end %>
+            </td>
+            <% if logged_in? %>
+            <td style="text-align:right;padding-right:10px;" class="logout">
+            <%= link_to 'Выйти', '/admin/logout' %>
+            </td>
+            <% end %>
+          </tr>
+        </table>
+
+        <% unless login_page? %>
+          <div class="menu">
+            <%= link_to 'Каталог', admin_categories_path, menu_selected('categories') %>
+            <%= link_to 'Продукты', admin_items_path, menu_selected('items') %>
+            <%= link_to 'Стандарты', admin_standards_path, menu_selected('standards') %>
+            <%= link_to 'Тексты', admin_pages_path, menu_selected('pages') %>
+            <%= link_to 'Картинки', admin_random_images_path, menu_selected('random_images') %>
+            <%= link_to 'Компании', admin_companies_path, menu_selected('companies') %>
+            <%= link_to 'Страны', admin_countries_path, menu_selected('countries') %>
+            <%= link_to 'Прайс листы', admin_price_lists_path, menu_selected('price_lists') %>
+            <%#= link_to 'Валюты', admin_currencies_path, menu_selected('currencies') %>
+            <%= link_to 'Переводы', admin_view_translations_path, menu_selected('view_translations') %>
+            <%= link_to 'Пользователи', admin_users_path, menu_selected('users') %>
+            <%= link_to 'Док', admin_document_types_path, menu_selected('document_types') %>
+          </div>
+
+          <br class="clear" />
+          <div class="submenu">
+            <%= yield :sub_menu %>
+            <br class="clear" />
+
+            <div id="lang_wrapper">
+              <div id="lang_container">
+                <%= yield :lang_menu %>
+                <br class="clear" />
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <br class="clear" />
+
+      <div id="mainContent">
+        <%= yield %>
+        <br class="clear" />
+      </div>
+
+      <div id="footer">
+        <p>Color theme:
+          <a href="javascript:;" onclick="$.cookie('theme', 'blue', {path:'/admin'}); window.location.reload();"><img src="/images/admin/choose_color_blue.gif" alt="" /></a>
+          <a href="javascript:;" onclick="$.cookie('theme', 'red', {path:'/admin'}); window.location.reload();"><img src="/images/admin/choose_color_red.gif" alt="" /></a>
+          <a href="javascript:;" onclick="$.cookie('theme', 'green', {path:'/admin'}); window.location.reload();"><img src="/images/admin/choose_color_green.gif" alt="" /></a>
+        </p>
+      </div>
+
+    </div>
+  </body>
+</html>

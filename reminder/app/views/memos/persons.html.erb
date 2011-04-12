@@ -1,0 +1,7 @@
+<%= render :partial => 'users/menu' %>
+
+<ul>
+<% @persons.each do |person| %>
+  <li><%= link_to person.title, memo_path(person) %></li>
+<% end  %>
+</ul>

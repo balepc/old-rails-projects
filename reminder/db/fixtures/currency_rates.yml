@@ -1,0 +1,19 @@
+one:
+  currency_id: 1
+  to_currency_id: 2
+  rate: 0.0166
+
+two:
+  currency_id: 1
+  to_currency_id: 3
+  rate: 0.069200
+
+three:
+  currency_id: 1
+  to_currency_id: 4
+  rate: 0.544000
+
+four:
+  currency_id: 1
+  to_currency_id: 5
+  rate: 0.7098

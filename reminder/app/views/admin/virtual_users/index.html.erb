@@ -1,0 +1,19 @@
+<table width="100%" class="grid">
+  <tr>
+    <th>IP Address</th>
+    <th>Country</th>
+    
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+  </tr>
+  
+  <% @users.each do |user| %>
+    <tr class="<%= cycle('odd', 'even')  %>" >
+      <td align=right><%= user.ip_address %></td>
+      <td><%= user.country %></td>
+    
+      <td><%= link_to 'block', '#' %></td>
+      <td><%= link_to 'view actions', '#' %></td>
+    </tr>
+  <% end %>
+</table>

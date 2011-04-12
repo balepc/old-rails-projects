@@ -1,0 +1,25 @@
+<% content_for :sub_menu do %>
+  <%= link_to image_tag('admin/page_text.gif')+'Назад к списку', admin_random_images_path %>
+<% end %>
+
+<% form_for @image, :url=>admin_random_images_path, :html => { :multipart => true } do |form| %>
+
+  <table class="full-form">
+    <colgroup width="34%" />
+    <tr class="full-row">
+      <td class="label" style="text-align:right">
+        <%= form.label "Картинка" %>
+      </td>
+      <td>
+        <%= form.file_field :image %> <!--file_field_tag,  -->
+      </td>
+    </tr>
+
+    <tr>
+      <td class="form-controls" colspan="2">
+        <hr />
+        <%= form.submit 'Добавить' %> <%= form.submit 'Добавить и вернуться к списку' %>
+      </td>
+    </tr>
+  </table>
+<% end %>

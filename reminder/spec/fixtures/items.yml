@@ -1,0 +1,39 @@
+1:
+  id: 1
+  title: Item 1
+  brief_description: ahaha
+  description: Opisanije
+  price: 122
+  link: www.inbox.lv
+
+2:
+  id: 2
+  title: Item 2
+  brief_description: ahaha
+  description: Opis 2
+  price: 0.00 Ls
+  link: www.xakep.lv
+
+3:
+  id: 3
+  title: Item 3
+  brief_description: ahaha
+  description: Opis 3
+  price: 0.25 Ls
+  link: www.google.com
+
+4:
+  id: 4
+  title: Item 4
+  brief_description: ahaha
+  description: Opis 4
+  price: 0.26 Ls
+  link: www.mail.ru
+
+5:
+  id: 5
+  title: Item 5
+  brief_description: ahaha
+  description: Opis 5
+  price: 1.26 Ls
+  link: www.lenta.ru

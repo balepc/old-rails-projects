@@ -1,0 +1,22 @@
+<% content_for :sub_menu do %>
+  <%= link_to image_tag('admin/page_text.gif')+'Назад к списку', admin_standards_path %>
+<% end %>
+
+<% content_for :lang_menu do %>
+  <%= render :partial => "/admin/shared/lang" %>
+<% end %>
+
+<% form_for @standard, :url=>admin_standard_path(@standard) do |form| %>
+  <table class="full-form">
+    <colgroup width="100" />
+
+    <%= render :partial => 'form', :locals=>{:form=>form}  %>
+
+    <tr>
+      <td colspan="2" class="form-controls">
+        <hr />
+        <%= form.submit 'Обновить' %> <%= form.submit 'Обновить и вернуться к списку' %>
+      </td>
+    </tr>
+  </table>
+<% end %>

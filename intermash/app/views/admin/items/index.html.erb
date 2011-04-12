@@ -1,0 +1,90 @@
+<% content_for :sub_menu do %>
+  <%= link_to image_tag('admin/page_new.gif')+'Добавить продукт', new_admin_item_path %>
+<% end %>
+
+<% content_for :lang_menu do %>
+  <%= render :partial => "/admin/shared/lang" %>
+<% end %>
+
+<% form_tag admin_items_path, :method=>:get do %>
+  <table class="list-table">
+    <tr>
+      <td class="px120">Категория:</td>
+      <td><%= select_tag :category_id, options_for_select([""]+Category.all.map{|c| [c.full_name, c.id]}, params[:category_id].to_i), :style=>"width: 185px;" %></td>      
+      <td>&nbsp</td>
+      <td>&nbsp</td>
+      <td>&nbsp</td>
+      <td>&nbsp</td>
+    </tr>
+    <tr>
+      <td class="px120">Модель:</td>
+      <td><%= text_field_tag :model, params[:model] %></td>
+      <td class="px120">Код:</td>
+      <td><%= text_field_tag :code, params[:code] %></td>
+      <td class="px120">Артикул:</td>
+      <td><%= text_field_tag :article, params[:article] %></td>
+    </tr>
+    <tr>
+      <td class="px120">Страна:</td>
+      <td><%= select_tag :country_id, options_for_select([""]+Country.all.map{|c| [c.name, c.id]}, params[:country_id].to_i), :style=>"width: 185px;" %></td>
+      <td class="px120">Компания:</td>
+      <td><%= select_tag :company_id, options_for_select([""]+Company.all.map{|c| [c.name, c.id]}, params[:company_id].to_i), :style=>"width: 185px;" %></td>
+      <td>&nbsp</td>
+      <td>&nbsp</td>
+    </tr>
+    <tr>
+      <td>&nbsp</td>
+      <td>&nbsp</td>
+      <td>&nbsp</td>
+      <td>&nbsp</td>
+      <td>&nbsp</td>
+      <td align="right" style="text-align: right;">
+        <input type="button" value="Очистить" onclick="window.location.href='/admin/items'">
+        <input type="submit" value="Применить">
+      </td>
+    </tr>
+  </table>
+<% end %>
+
+<br>
+
+
+<table class="list-table">
+  <tr>
+    <td class="table_heading table_checkcol"><input type="checkbox" class="check" disabled/></td>
+    <td class="table_heading px120">Категория</td>    
+    <td class="table_heading px120">Модель</td>
+    <td class="table_heading px55">Код</td>
+    <td class="table_heading px75">Страна</td>
+    <td class="table_heading px120">Компания</td>
+    <td class="table_heading px55">Артикул</td>
+    <td class="table_heading">Краткое описание</td>
+
+    <td class="table_heading table_linkcol">&nbsp;</td>
+  </tr>
+
+  <% @items.each do |block| %>
+    <tr class="<%= cycle('', 'grey')  %>" >
+      <td class="table_checkcol"><input type="checkbox" class="check" disabled/></td>
+      <td><%= bt block.category.name unless block.category.nil? %></td>      
+      <td><%= bt block.model %></td>
+      <td><%= bt block.code %></td>
+      <td><%= bt block.country.name unless block.country.nil? %></td>
+      <td><%= bt block.company.name unless block.company.nil? %></td>
+      <td><%= bt block.article %></td>
+      <td><%= bt block.shortdesc %></td>
+
+      <td style="text-align:center" nowrap>
+        <%= link_to image_tag('admin/application_form_edit.png', :title=>'Редактировать продукт'), edit_admin_item_path(block) %>
+        <%= link_to image_tag('admin/application_form_delete.png', :title=>'Удалить продукт'), admin_item_path(block), :method => :delete, :confirm => 'Вы действительно хотите удалить запись?' %>
+        <%= link_to image_tag('admin/application_double.png', :title=>'Клонировать'), clone_admin_item_path(block), :method => :get, :confirm => 'Вы действительно хотите клонировать запись?' %>
+      </td>
+    </tr>
+  <% end %>
+
+</table>
+
+
+<center>
+  <%= will_paginate @items %>
+</center>

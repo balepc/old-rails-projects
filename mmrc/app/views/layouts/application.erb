@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>MRCC</title>
+    <%= stylesheet_link_tag 'application', 'vessel', 'reports', 'dashboard', 'jquery.autocomplete', 'datepicker/datepicker', 'datepicker/layout' %>
+    <%= javascript_include_tag 'jquery-1.4.2.min', 'jquery.autocomplete.min', 'datepicker/datepicker' %>
+  </head>
+  <body>
+    <div id="page">
+      <div id="navigation">
+        <%= render :partial=>'shared/navigation' %>
+      </div>
+
+      <div id="content">
+        <%= yield %>
+      </div>
+
+      <div id="footer">MRCC Application 2010</div>
+    </div>
+  </body>
+</html>

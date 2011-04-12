@@ -1,0 +1,20 @@
+<div id="wrap-content-2cols-catalog" style="background: transparent">
+
+  <div id="mainContent2" style="margin-left: 10px;" >
+    <%= render :partial=>'shared/breadcrumb' %>
+    <br>
+    <h1><%= @category.name %></h1>
+    <p>
+      <%= @category.description || (@category.parent ? @category.parent.description : "") %><br>
+    </p>
+    <div style="margin-bottom: 10px;">
+      <% form_tag category_path(@category), :method=>:get do %>
+        <%= text_field_tag :q, params[:q], :class=>'textfield' %>
+        <%= submit_tag "Искать" %>
+      <% end %>
+    </div>
+
+    <%= render :partial=>'items/table' %>
+
+  </div>
+</div>

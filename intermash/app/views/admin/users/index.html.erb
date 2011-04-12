@@ -1,0 +1,29 @@
+<% content_for :sub_menu do %>
+  <%= link_to image_tag('admin/page_new.gif')+'Добавить пользователя', new_admin_user_path %>
+<% end %>
+
+<table class="list-table">
+  <tr>
+    <td class="table_heading table_checkcol"><input type="checkbox" class="check" disabled/></td>
+    <td class="table_heading">Логин</td>
+    <td class="table_heading">Email</td>
+    <td class="table_heading">Администратор?</td>
+
+    <td class="table_heading table_linkcol">&nbsp;</td>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr class="<%= cycle('', 'grey')  %>" >
+      <td class="table_checkcol"><input type="checkbox" class="check" disabled/></td>
+      <td><%= bt user.login, 50 %></td>
+      <td><%= bt user.email, 50 %></td>
+      <td><%= bt user.admin.to_s, 50 %></td>
+
+      <td style="text-align:center">
+        <%= link_to image_tag('admin/application_form_edit.png', :title=>'Редактировать пользователя'), edit_admin_user_path(user) %>
+        <%= link_to image_tag('admin/application_form_delete.png', :title=>'Удалить пользователя'), admin_user_path(user), :method => :delete, :confirm => 'Вы действительно хотите удалить запись?' %>
+      </td>
+    </tr>
+  <% end %>
+
+</table>

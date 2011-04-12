@@ -1,0 +1,87 @@
+div.vessel-form {
+    width: 500px;
+    text-align: center;
+    margin-left: 30px;
+}
+
+form.vessel-form input {
+    width: 270px;
+}
+form.vessel-form select {
+    width: 275px;
+}
+
+fieldset {
+    float: left;
+    clear: both;
+    width: 100%;
+    background-color: #F2EFE9;
+}
+legend {
+    padding: 0;    
+    font-weight: bold;
+}
+fieldset ol {
+    padding: 1em 1em 0 1em;
+    list-style: none;
+}
+fieldset li {
+    padding-bottom: 1em;
+}
+fieldset.submit {
+    float: none;
+    width: auto;
+    border-style: none;
+    padding-left: 12em;
+    background-color: transparent;
+}
+label {
+    text-align: right;
+    position: relative;
+    float: left;
+    width: 10em;
+    margin-right: 1em;
+}
+label em {
+    position: absolute;
+    margin-left: 3px;
+    top: 0;
+    color: red;
+}
+
+label strong img {
+    position: absolute;
+    left: 7.5em;
+    top: 0.25em;
+    cursor: pointer;
+}
+
+label strong {
+    position: absolute;
+    left: 30em;
+    top: 0.2em;
+    width: 19em;
+    color: #C00;
+    font-size: 85%;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.fieldWithErrors label {
+    color: #C00000 ;
+    font-weight: bold;
+    cursor: help;
+}
+
+table.table td {
+    padding: 5px;
+    border: dotted 1px gray;
+}
+
+table.table th {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 11pt;
+    border: dotted 1px gray;
+    height: 30px;
+}

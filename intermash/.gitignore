@@ -1,0 +1,10 @@
+public/system/documents/*
+log/development.log
+public/system/basedocuments/*
+nbproject/private/private.xml
+public/system
+public/system/image_datas
+config/database.yml
+
+log/development.log
+log/production.log

@@ -1,0 +1,43 @@
+<div id="wrap-content-2cols">
+
+  <div id="sidebar-left">
+    <%= image_tag @random_image.image.url(:normal) unless @random_image.nil? %>
+    <%= render :partial => 'welcome' %>
+    <!-- end #sidebar-left -->
+  </div>
+
+  <div id="mainContent">
+    <h1><%= t(:last_items) %></h1>
+
+    <% latest_items(5).each do |item| %>
+      <div class="news">
+        <h2><%= link_to item.model, item_path(item) %></h2>
+        <p><%= link_to item.category.name, category_path(item.category), :class => 'category' %></p>
+        <%=
+        image = item.images.first
+        if !image.nil?
+          tinyUrl = image.image_data.url(:tiny)
+        else
+          tinyUrl = 'empty-tiny.jpg'
+        end
+
+        link_to image_tag(tinyUrl, :title=>item.model), item_path(item)
+        %>
+        <p class="descr">
+          <%=
+
+            SJoiner.new("", :def_sep=>" &nbsp; ")\
+              .sjoin(item.code, :label=>"#{I18n.t(:item_code)}: ")\
+              .sjoin(item.article, :label=>"#{I18n.t(:item_articule)}: ")\
+              .sjoin(item.shortdesc)\
+              .sjoin("<br>")\
+              .sjoin(item.company_country, :label=>"#{I18n.t(:item_production)}: ", :sep=>'')\
+          %>
+        </p>
+        <!--<p class="descr"><%#= item.shortdesc %></p>-->
+      </div>
+    <% end %>
+
+</div><!-- end #mainContent -->
+
+</div><!-- end #wrap-content-2cols -->

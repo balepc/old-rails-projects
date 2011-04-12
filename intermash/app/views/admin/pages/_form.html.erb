@@ -1,0 +1,14 @@
+<%= render :partial => '/admin/shared/initmce'  %>
+
+<%# already_saved = !@page.new_record? %>
+<%# hint_for? %>
+
+<div class="page-block">
+  <div>
+    <%= form.label field_value("page_type"), "Тип страницы" %>
+    <%= form.select :page_type, page_type_list.invert, {:include_blank=>false}, {:disabled=>true} %>
+  </div>
+  <div id="mce-container">
+    <%= form.text_area field_value("body"), :class=>'tinymce', :style=>'width:100%' %>
+  </div>
+</div>

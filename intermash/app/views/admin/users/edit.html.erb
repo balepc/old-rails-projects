@@ -1,0 +1,20 @@
+<% content_for :sub_menu do %>
+  <%= link_to image_tag('admin/page_text.gif')+'Назад к списку', admin_users_path %>
+<% end %>
+
+
+
+<% form_for :user, @user, :url=>admin_user_path(@user), :html=>{:method=>:put} do |form| %>
+  <table class="full-form">
+    <colgroup width="100" />
+
+    <%= render :partial => 'form', :locals=>{:form=>form}  %>
+
+    <tr>
+      <td colspan="2" class="form-controls">
+        <hr />
+        <%= form.submit 'Обновить' %> <%= form.submit 'Обновить и вернуться к списку' %>
+      </td>
+    </tr>
+  </table>
+<% end %>

@@ -1,0 +1,18 @@
+<% if @other_items.previous_page %>
+  <%= link_to '', other_items_path(:page => @other_items.previous_page, :other_class => params[:other_class]), :class => 'larrow pagination_move' %>
+<% elsif @other_items.total_pages > 1 %>
+  <%= link_to '', other_items_path(:page => @other_items.total_pages, :other_class => params[:other_class]), :class => 'larrow pagination_move' %>
+<% end %>
+
+<% @other_items.each do |item| %>
+  <div class="<%= params[:other_class] %>">
+    <%= link_to image_tag(item.assets.default[0].public_filename(:square)), item_path(item), :class=>"oth-gift-img" unless item.assets.empty? %>
+    <% if params[:other_class] == 'other-gift' %>
+      <h4><%= link_to item.title, item_path(item) %></h4>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @other_items.next_page %>
+  <%= link_to '', other_items_path(:page => @other_items.next_page, :other_class => params[:other_class]), :class => 'rarrow pagination_move' %>
+<% end %>

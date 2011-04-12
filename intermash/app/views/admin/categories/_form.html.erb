@@ -1,0 +1,29 @@
+<%= render :partial => '/admin/shared/initmce' %>
+
+<%# already_saved = !@category.new_record? %>
+
+<%= hint_for @category, :parent %>
+<tr class="full-row">
+  <td class="label"><%= form.label field_value("parent"), "Род. категория" %></td>
+  <% if @category.new_record? %>
+    <% categories = Category.find(:all) %>
+  <% else %>
+    <% exclude_ids = @category.self_and_descendants.collect{|c| c.id} %>
+    <% categories = Category.find(:all, :conditions=>["NOT id IN (?)", exclude_ids]) %>
+  <% end %>
+
+  <td><%= form.select :parent_id, categories.map {|c| [c.full_name, c.id] },
+    :include_blank => true  %></td>
+</tr>
+
+<%= hint_for @category, :name %>
+<tr class="full-row">
+  <td class="label"><%= form.label :name, "Название", :title=>@category.errors.on(:name) %></td>
+  <td><%= form.text_field field_value("name") %></td>
+</tr>
+
+<%= hint_for @category, :description %>
+<tr class="full-row">
+  <td class="label"><%= form.label field_value("description"), "Описание" %></td>
+  <td><%= form.text_area field_value("description"), :class=>'tinymce' %></td>
+</tr>

@@ -1,0 +1,9 @@
+<div class="container">
+  <h2>День<span class="date"><%= @date.strftime("%d %B %Y") %></span></h2>
+  <% @memos.each do |memo| %>
+    <p class="prof-date"><%= link_to memo.title, memo_path(memo) %></p>
+  <% end %>
+  <% @holidays.each do |holiday| %>
+    <p class="prof-date"><%= link_to holiday.title, holiday_path(holiday) %></p>
+  <% end %>
+</div>

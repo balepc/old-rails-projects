@@ -1,0 +1,6 @@
+development:
+  adapter: mysql
+  database: random_image
+  encoding: utf8
+  username: root
+  password: dx87vv30

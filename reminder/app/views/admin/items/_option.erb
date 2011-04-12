@@ -1,0 +1,19 @@
+<%= 
+    link_to_function "#{qt.option.name} #{'<b>+</b>' unless qt.children.empty?}" do |page| 
+      
+      str = "<div class=\"selected_option\">"
+      str += "<input type='hidden' name = 'item[tree_node_attrs][]' value='#{qt.id}' >"      
+      str += qt.full_name
+      str += " <a style=\"color: red;\" onclick=\"$(this).parents('.selected_option').remove(); return false;\" href=\"#\">x</a>"    
+      str += "<br/>"
+      str += "</div>"
+  
+      page['#selection_box'].append( str )
+    end
+%>
+
+<ul>
+  <% qt.children.each do |sub_option| %>
+    <li><%= render :partial => 'option', :locals => {:qt => sub_option, :f => f} %></li>
+  <% end %>
+</ul>

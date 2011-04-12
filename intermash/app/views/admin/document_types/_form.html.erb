@@ -1,0 +1,28 @@
+<%# already_saved = !@category.new_record? %>
+<tr class="full-row">
+  <td class="label"><%= form.label :name, "Название", :title=>@document_type.errors.on(:name) %></td>
+  <td><%= form.text_field :name %></td>
+</tr>
+<tr class="full-row">
+  <td class="label"><%= form.label :name, "Только для авторизированых пользователей", :title=>@document_type.errors.on(:hidden) %></td>
+  <td><%= form.check_box :hidden %></td>
+</tr>
+<tr class="full-row">
+  <td class="label">
+    <%= form.label :basedocument, "Базовый документ", :title=>@document_type.errors.on(:basedocument) %>
+  </td>
+
+  <td>
+    <%= form.file_field :basedocument, :rows=>5, :title=>@document_type.errors.on(:basedocument) %>
+    <% if @document_type.basedocument_file_name %>
+      <br/><span style="color: green;"><%= @document_type.basedocument_file_name %></span>
+    <% end %>
+  </td>
+</tr>
+<tr class="full-row">
+  <td class="label"><%= form.label :valid_till, "Срок действия базового документа", :title=>@document_type.errors.on(:valid_till) %></td>
+  <td>
+    <%= form.text_field :valid_till %>
+    <br/><span style="color: gray;">Формат (2010-12-31)</span>
+  </td>
+</tr>

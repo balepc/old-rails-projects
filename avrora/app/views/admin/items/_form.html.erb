@@ -1,0 +1,216 @@
+<% content_for(:header) do %>
+  <%= javascript_include_tag 'admin/jquery.autocomplete' %>
+  <%= stylesheet_link_tag 'admin/jquery.autocomplete'  %>
+<% end %>
+
+<%= render :partial => '/admin/shared/initmce' %>
+
+<% already_saved = !@item.new_record? %>
+
+<tr class="full-row">
+  <td class="label"><%= form.label field_value("accessories"), "Аксесуар" %></td>
+  <td>
+    <%= form.check_box :accessory %>
+  </td>
+</tr>
+
+<tr class="full-row">
+  <td class="label"><%= form.label field_value("hidden"), "Только для авторизованных пользователей" %></td>
+  <td>
+    <%= form.check_box :hidden %>
+  </td>
+</tr>
+
+<tr class="full-row">
+  <td class="label"><%= form.label :category, "Категория", :title=>@item.errors.on(:category) %></td>
+  <td><%= form.select :category_id, Category.category_children_for_select, :include_blank => true  %></td>
+</tr>
+
+
+<tr class="full-row">
+  <td class="label"><%= form.label field_value("model"), "Модель" %></td>
+  <td><%= form.text_field field_value("model") %></td>
+</tr>
+
+<tr class="full-row">
+  <td class="label"><%= form.label :code, "Код" %></td>
+  <td><%= form.text_field :code %></td>
+</tr>
+
+<tr class="full-row">
+  <td class="label"><%= form.label field_value("country"), "Страна" %></td>
+  <td><%= form.select :country_id, Country.order_by_name.map{|c| [c.name, c.id]}, :include_blank => true  %></td>
+</tr>
+
+<tr class="full-row">
+  <td class="label"><%= form.label field_value("company"), "Компания" %></td>
+  <td><%= form.select :company_id, Company.order_by_name.map{|c| [c.name, c.id]}, :include_blank => true  %></td>
+</tr>
+
+<tr class="full-row">
+  <td class="label"><%= form.label :article, "Артикул" %></td>
+  <td><%= form.text_field :article %></td>
+</tr>
+
+<%= hint_for @item, :shortdesc %>
+<tr class="full-row">
+  <td class="label"><%= form.label field_value("shortdesc"), "Кр. описание" %></td>
+  <td><%= form.text_field field_value('shortdesc') %></td>
+</tr>
+
+<%= hint_for @item, :description %>
+<tr class="full-row">
+  <td class="label"><%= form.label field_value("description"), "Описание" %></td>
+  <td><%= form.text_area field_value("description"), :class=>'tinymce' %></td>
+</tr>
+
+<tr class="full-row"><td colspan="2"><hr /></td></tr>
+
+<% if already_saved %>
+  <% @item.images.each_with_index do |image, index| %>
+    <tr class="full-row">
+      <td class="label"><%= form.label "Картинка ##{index+1}" %></td>
+      <td><%= image_tag image.image_data.url(:medium) %><%= link_to image_tag('admin/delete.png', :title=>'Удалить картинку'), admin_image_path(image), :method=>:delete, :confirm=>"Вы действительно хотите удалить картинку?"%></td>
+    </tr>
+  <% end %>
+
+  <% (4-@item.images.size).downto(1) do |i|%>
+    <tr class="full-row">
+      <td class="label"><%= form.label "Картинка ##{5-i}" %></td>
+      <td><%= file_field_tag 'item[pictures][]' %></td>
+    </tr>
+  <% end %>
+<% end %>
+
+
+<% unless @item.new_record? %>
+  <% unless @item.accessory? %>
+    <tr class="full-row">
+      <td colspan="3">
+        <h2>Комплектация</h2>
+        <div class="attribute_wrapper">
+          <table id="custom_attributes" style="<%= 'display:none' if @item.complectations.empty? %>">
+            <colgroup />
+            <colgroup width="200"/>
+            <colgroup width="50" />
+            <%#*<colgroup width="28" />%>
+
+            <tr>
+              <th>Описание</th>
+              <th>Количество</th>
+              <th>&nbsp;</th>
+            </tr>
+            <% @item.complectations.each do |compl| %>
+              <%= render :partial => 'complect', :locals => {:complect=>compl} %>
+            <% end %>
+
+          </table>
+          <p><%= add_attribute_link "Добавить" %></p>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+<% end %>
+
+<% unless @item.new_record? %>
+  <% unless @item.accessory? %>
+    <tr class="full-row">
+      <td colspan="3">
+        <h2>Аксесуары</h2>
+        <div class="accessories_wrapper">
+          <table id="custom_accessories" style="<%= 'display:none' if @item.accessories.empty? %>">
+            <colgroup />
+            <colgroup width="200"/>
+            <colgroup width="50" />
+            <%#*<colgroup width="28" />%>
+
+            <tr>
+              <th>Название</th>
+              <th>Количество</th>
+              <th>&nbsp;</th>
+            </tr>
+            <% @item.accessories.each do |compl| %>
+              <%= render :partial => 'accessories', :locals => {:complect=>compl} %>
+            <% end %>
+
+          </table>
+          <p><%= add_accessories_link "Добавить" %></p>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+<% end %>
+
+
+<tr class="full-row">
+  <td colspan="2">
+    <h2>Стандарты</h2>
+    <a href="javascript:;" id="standard_toggler">Показать</a>
+    <div id="standard_container" style="padding-right:10px;padding-bottom:20px;display:none;">
+
+      <div id="standard_ids">
+        <% @item.standards.each do |standard| %>
+          <input type="hidden" name="item[selected_standards][]" value="<%= standard.id %>" />
+        <% end %>
+      </div>
+      <script type="text/javascript">
+        $(document).ready(function(){
+          $("#standard_container a").click(function(){
+            $(this).toggleClass('standard-selected');
+            var id = $(this).attr('value');
+            if ($('#standard_ids input[value=' + id + ']').length > 0) {
+              $('#standard_ids input[value=' + id + ']').remove();
+            }
+            else {
+              $('#standard_ids').append(
+              '<input type="hidden" name="item[selected_standards][]" value="'
+                + id + '">');
+            }
+            return false;
+          });
+          $("#standard_toggler").click(function(){
+            $("#standard_container").toggle();
+            $(this).text($("#standard_container")
+            .is(':visible')? 'Спрятать':'Показать');
+          });
+        });
+      </script>
+
+      <% @groups.push(nil).each do |group| /# nil for others #/ %>
+        <h3><%= group.nil? ? "Другие" : group.name %></h3>
+        <% standards = group.nil? ? @orphans : group.standards %>
+        <% standards.each do |standard| %>
+          <% selected = @item.standards.include?(standard) %>
+          <%= link_to standard.name, '#', :value => standard.id,
+            :class => selected ? 'standard-selected' : '' %> &nbsp;
+        <% end %>
+      <% end %>
+    </div>
+  </td>
+</tr>
+
+<% unless @item.new_record? %>
+  <tr class="full-row">
+    <td colspan="2">
+      <h2>Документы</h2>
+      <div class="attribute_wrapper">
+        <table id="custom_documents" style="<%= 'display:none' if @item.documents.empty? %>">
+          <colgroup />
+          <colgroup width="250"/>
+
+
+          <tr>
+            <th>Файл</th>
+            <th>Тип</th>
+            <th>Срок действия <span style="color: gray; font-size: 7pt;">(2010-12-31)</span></th>
+            <th>&nbsp;</th>
+          </tr>
+
+          <%= render :partial => 'document', :collection => @item.documents %>
+
+        </table>
+        <p><%= add_document_link "Добавить" %></p>
+      </div>
+    </td>
+  </tr>
+<% end %>

@@ -1,0 +1,13 @@
+<div class="popular-gifts2">
+  <h2 class="pop-gifts">Лучшие подарки на <%= @holiday.title %></h2>
+  
+  <% @holiday.items.each do |item| %>
+    <div class="gift2">
+      <%= link_to image_tag(item.assets.default[0].public_filename(:big_square)), item_path(item), :class => 'pop-gift-img' unless item.assets.empty? %>
+      <h4><%= link_to item.title, item_path(item)  %></h4>
+      <p><%= item.brief_description %></p>
+      <p><strong>Цена:&nbsp;</strong> <%= item.price %> <%= item.currency.code if item.currency  %></p>
+    </div>
+  <% end %>
+      
+</div>

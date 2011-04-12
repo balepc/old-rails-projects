@@ -1,0 +1,43 @@
+<div id="mainContent2">
+  <p class="breadscr">
+    <%= @category.self_and_ancestors.collect {|c| "<span class=\"inactivecrumb\">#{c.name}</span>"}.join(" &ndash; ") %>
+  </p>
+  <h1><%= @category.name %></h1>
+  <p>
+    <%= @category.description || (@category.parent ? @category.parent.description : "") %>
+  </p>
+  <% @items.each do |item| %>
+    <div class="product<%= @items.last == item ? ' last-product' : '' %>">
+      <%=
+      image = item.images.first
+      if !image.nil?
+        mediumUrl = image.image_data.url(:medium)
+      else
+        mediumUrl = 'empty-medium.jpg'
+      end
+
+      link_to image_tag(mediumUrl, :title=>item.title), item_path(item)
+      %>
+
+      <!--<img src="/images/product-1.jpg" alt="" />-->
+      <h2><%= link_to "#{item.title}, #{item.model}", item_path(item) %></h2>
+      <p>
+        <%= link_to item.category.name, category_path(item.category), :class => 'category2' %>
+      </p>
+      <p class="descript">
+        <%=
+          SJoiner.new("", :def_sep=>" &nbsp; ")\
+            .sjoin(item.code, :label=>"#{I18n.t(:item_code)}: ")\
+              .sjoin(item.article, :label=>"#{I18n.t(:item_articule)}: ")\
+              .sjoin(item.shortdesc)\
+              .sjoin("<br>")\
+              .sjoin(item.company_country, :label=>"#{I18n.t(:item_production)}: ", :sep=>'')\
+              .sjoin(display_www(item))
+        %>
+      </p>
+      <!--<p class="descript">
+        <%#= link_to item.shortdesc, item_path(item) %>
+      </p>-->
+    </div>
+  <% end %>
+</div> <!-- end #mainContent2 -->

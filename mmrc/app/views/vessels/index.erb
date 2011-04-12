@@ -1,0 +1,17 @@
+<table class="table" width="100%">
+  <tr>
+    <th align="left">Vessel name</th>
+    <th>MMSI</th>
+    <th>Imon</th>
+    <th>Vessel flag</th>
+  </tr>
+  <% @vessels.each do |vessel| %>
+    <tr>
+      <td align="left"><%= vessel.ship_name %></td>
+      <td><%= vessel.mmsi %></td>
+      <td><%= vessel.imon %></td>
+      <td><%= vessel.ship_flag %></td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @vessels %>

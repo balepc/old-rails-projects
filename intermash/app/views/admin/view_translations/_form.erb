@@ -1,0 +1,21 @@
+<tr class="full-row">
+  <td class="label"><%= form.label :scope, "Область", :title=>@translation.errors.on(:scope) %></td>
+  <td><%= form.text_field :scope, :disabled=>true %></td>
+</tr>
+
+<tr><td colspan="2"><hr /></td></tr>
+
+<tr class="full-row">
+  <td class="label"><%= form.label :code, "Ключ", :title=>@translation.errors.on(:code) %></td>
+  <td><%= form.text_field :code, :disabled=>true %></td>
+</tr>
+
+<tr class="full-row">
+  <td class="label"><%= form.label :value_en, "По-английски", :title=>@translation.errors.on(:value_en) %></td>
+  <td><%= form.text_field :value_en %></td>
+</tr>
+
+<tr class="full-row">
+  <td class="label"><%= form.label :value_ru, "По-русски", :title=>@translation.errors.on(:value_ru) %></td>
+  <td><%= form.text_field :value_ru %></td>
+</tr>

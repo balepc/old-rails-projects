@@ -1,0 +1,57 @@
+<table id="items" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <th align="center"><%= t(:item_model) %></th>
+    <th align="center"><%= t(:item_code) %></th>
+    <th align="center"><%= t(:item_country) %></th>
+    <th align="center"><%= t(:item_company) %></th>
+    <th align="center"><%= t(:item_articule) %></th>
+    <th align="center"><%= t(:item_short_desc) %></th>
+    <th align="center"><%= t(:item_documents) %></th>
+    <th align="center" style="border-right: 1px solid gray;"><%= t(:item_count) %></th>
+  </tr>
+
+  <% @items = @items.reject{|i| i.item.hidden?} unless logged_in? %>
+  <% unless @items.empty? %>
+    <% @items.each do |compl| %>
+      <% item = compl.item %>
+      <tr class="<%='last' if @items.last?(compl) %>">
+        <td align="center">
+          <%= link_to "#{item.model}", item_path(item), :class=>'category_link' %><br>
+        </td>
+        <td align="center">
+          <%= __(item.code) %>
+        </td>
+        <td align="center">
+          <%= __(item.country_name) %>
+        </td>
+        <td align="center">
+          <%= __(item.company_name) %>
+        </td>
+        <td align="center">
+          <%= __(item.article) %>
+        </td>
+        <td align="center">
+          <%= __(item.shortdesc) %>
+        </td>
+        <td align="center">
+          <% item.documents.each do |doc| %>
+            <% next if doc.hidden? and !logged_in? %>
+            <ul style="list-style: none;">
+              <li><%= link_to doc.document_type.name, download_document(doc), :style=>'color: gray;' %></li>
+            </ul>
+          <% end %>
+        </td>
+
+        <td align="center"  class="right">
+          <%= __(compl.count) %>
+        </td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr class="last">
+      <td colspan="7" class="right" align="center">
+        <%= t(:no_items_found) %>
+      </td>
+    </tr>
+  <% end %>
+</table>

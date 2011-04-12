@@ -1,0 +1,59 @@
+<tbody class="attribute_container">
+  <tr>
+
+    <% if complect %>
+      <td width="100%">
+        <input class="item_lookup" type="text" name="item[selected_items][][lookup]" value="<%= complect.item.lookup_value %>" readonly="true">
+      </td>
+      <td>
+        <input type="text" name="item[selected_items][][count]" value="<%= complect.count %>">
+      </td>
+    <% else %>
+      <td width="100%">
+        <input class="item_lookup" type="text" name="item[selected_items][][lookup]">
+      </td>
+      <td>
+        <input  type="text" name="item[selected_items][][count]" value="1">
+      </td>
+    <% end %>
+
+    <td>
+
+    </td>
+    <td>
+      <%= link_to_function "Удалить", "$(this).closest('.attribute_container').remove();itemsChanged();" %>
+    </td>
+  </tr>
+</tbody>
+
+<script type="text/javascript">
+  function formatItem(row) {
+    var res = row[1];
+    if (row[2] != '') { res += ' ('+row[2]+')'    }
+    if (row[3] != '') { res += (' Код: ' + row[3]) }
+    if (row[4] != '') { res += (' Артикул: ' + row[4]) }
+
+    return res;
+  }
+
+  $(document).ready(function() {
+    $(".item_lookup").autocomplete(
+    "/admin/items/complectation", {
+      delay:4,
+      minChars:3,
+      matchSubset:1,
+      matchContains:1,
+      cacheLength:10,
+      formatItem:formatItem,
+      autoFill:true
+    }
+  );
+  });
+</script>
+
+<script type="text/javascript">
+  function itemsChanged() {
+    var len = $("#custom_attributes tbody.attribute_container").length
+    $("#custom_attributes").toggle(len > 0)
+  }
+</script>

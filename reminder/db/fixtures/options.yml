@@ -1,0 +1,218 @@
+1:
+  id: 1
+  name: День рождения
+  option_type: reason
+2:
+  id: 2
+  name: Новый год
+  option_type: reason
+3:
+  id: 3
+  name: Свадьба
+  option_type: reason
+4:
+  id: 4
+  name: Рождение ребенка
+  option_type: reason
+5:
+  id: 5
+  name: 8 марта
+  option_type: reason
+6:
+  id: 6
+  name: 23 февраля
+  option_type: reason
+7:
+  id: 7
+  name: Рождество
+  option_type: reason
+8:
+  id: 8
+  name: Другие
+  option_type: reason
+9:
+  id: 9
+  name: Люблю тебя
+  option_type: reason
+10:
+  id: 10
+  name: День программиста
+  option_type: reason
+
+################################################################################
+
+11:
+  id: 11
+  name: Женщине
+  option_type: person
+12:
+  id: 12
+  name: Мужчине
+  option_type: person
+13:
+  id: 13
+  name: Детям
+  option_type: person
+14:
+  id: 14
+  name: Друг
+  option_type: person
+15:
+  id: 15
+  name: Муж 
+  option_type: person
+16:
+  id: 16
+  name: Отец
+  option_type: person
+17:
+  id: 17
+  name: Брат
+  option_type: person
+18:
+  id: 18
+  name: Сын
+  option_type: person
+19:
+  id: 19
+  name: Внук 
+  option_type: person
+20:
+  id: 20
+  name: Дедушка
+  option_type: person
+21:
+  id: 21
+  name: Племянник
+  option_type: person
+22:
+  id: 22
+  name: Клиент
+  option_type: person
+23:
+  id: 23
+  name: Коллега
+  option_type: person
+24:
+  id: 24
+  name: Начальник
+  option_type: person
+25:
+  id: 25
+  name: Учитель
+  option_type: person
+26:
+  id: 26
+  name: Знакомый
+  option_type: person
+27:
+  id: 27
+  name: Подруга
+  option_type: person
+28:
+  id: 28
+  name: Жена
+  option_type: person
+29:
+  id: 29
+  name: Девушка
+  option_type: person
+30:
+  id: 30
+  name: Мама
+  option_type: person
+31:
+  id: 31
+  name: Сестра
+  option_type: person
+32:
+  id: 32
+  name: Дочь
+  option_type: person
+33:
+  id: 33
+  name: Внучка
+  option_type: person
+34:
+  id: 34
+  name: Бабушка
+  option_type: person
+35:
+  id: 35
+  name: Племянница
+  option_type: person
+36:
+  id: 36
+  name: Начальница
+  option_type: person
+37:
+  id: 37
+  name: Знакомая
+  option_type: person
+38:
+  id: 38
+  name: Родственники
+  option_type: person
+39:
+  id: 39
+  name: Друзья
+  option_type: person
+40:
+  id: 40
+  name: Знакомые
+  option_type: person
+
+################################################################################
+
+41:
+  id: 41
+  name: Новорожденный
+  option_type: age
+42:
+  id: 42
+  name: 1-2 года
+  option_type: age
+43:
+  id: 43
+  name: 3-5 лет
+  option_type: age
+44:
+  id: 44
+  name: 6-8 лет
+  option_type: age
+45:
+  id: 45
+  name: 9-11 лет
+  option_type: age
+46:
+  id: 46
+  name: 12-14 лет
+  option_type: age
+47:
+  id: 47
+  name: 15-17 лет
+  option_type: age
+48:
+  id: 48
+  name: 18-25 лет
+  option_type: age
+49:
+  id: 49
+  name: 25-35 лет
+  option_type: age
+50:
+  id: 50
+  name: 35-45 лет
+  option_type: age
+51:
+  id: 51
+  name: 45-55 лет
+  option_type: age
+52:
+  id: 52
+  name: 55-65 лет
+  option_type: age
+53:
+  id: 53
+  name: 65 лет и старше
+  option_type: age

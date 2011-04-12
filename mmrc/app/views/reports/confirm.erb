@@ -1,0 +1,18 @@
+<%= render :partial=>'navigation' %>
+
+<h2>Confirm</h2>
+
+<center>
+  <% form_for @report, :url=>save_confirm_report_path(@report) do |form| %>
+    <fieldset>
+      <ol>
+        <% @report.attributes.each do |attr, val| %>
+          <li><%= form.label attr.to_sym %><%= text_field_tag attr.to_sym, @report.send(attr), :class=>'text', :disabled=>true %></li>
+        <% end %>
+        
+
+      </ol>
+    </fieldset>
+    <%= form.submit "Confirm" %>
+  <% end %>
+</center>

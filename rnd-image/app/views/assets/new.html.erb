@@ -1,0 +1,10 @@
+<% form_for :asset, @asset, :url=>assets_path, :html=>{:multipart=>true} do |f| %>
+  <table width="100%" style="height: 300px;">
+
+    <tr><td align="center" valign="bottom"><%= f.file_field :image,  :size=>nil %></td></tr>
+
+    <tr>
+      <td align="center" valign="top"><%= f.submit 'Create', :style=>"width: 100px;" %></td>
+    </tr>
+  </table>
+<% end %>

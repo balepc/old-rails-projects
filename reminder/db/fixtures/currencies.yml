@@ -1,0 +1,24 @@
+lvl:
+  id: 1
+  name: Latvian Lat
+  code: LVL
+
+rub:
+  id: 2
+  name: Russian rubl
+  code: RUB
+
+ukr:
+  id: 3
+  name: Ukrain hryvna
+  code: UAH
+
+usd:
+  id: 4
+  name: US Dollar
+  code: USD
+
+eur:
+  id: 5
+  name: Euro
+  code: EUR

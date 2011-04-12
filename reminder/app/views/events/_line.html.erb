@@ -1,0 +1,15 @@
+<div class="lenta">
+  <h2>События</h2>
+  <div class="gallery">
+    <%= link_to '', previous_events_path, :class => 'larrow' %>
+    <% @upcoming_events.each do |event| %>
+      <div class="event" style="float:left">
+        <p class="event-date"><%= event.date.strftime("%d.%m.%Y") %></p>
+        <%= render :partial => 'events/image', :locals => {:event => event} %>
+        <p style="width: 100px;"><%= event.title %></p>
+      </div>
+    <% end %>
+    <%= link_to '', next_events_path, :class => 'rarrow' %>
+    <br class="clear" />
+  </div>
+</div>

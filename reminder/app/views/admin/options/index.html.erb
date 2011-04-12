@@ -1,0 +1,26 @@
+<% content_for :sub_menu do %>
+  <ul>
+    <li><%= link_to 'New option', new_admin_option_path %></li>
+    <li>|<%= link_to 'Tree', admin_questions_tree_path %></li>
+  </ul>
+<% end %>
+
+<table width="100%" class="grid">
+  <tr>
+    <th>Name</th>
+    <th>Option type</th>
+    
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+  </tr>
+  
+  <% @options.each do |option| %>
+    <tr class="<%= cycle('odd', 'even')  %>" >
+      <td><%= option.name %></td>
+      <td><%= option.option_type %></td>
+      
+      <td><%= link_to 'edit', edit_admin_option_path(option) %></td>
+      <td><%= link_to 'remove', admin_option_path(option), :method => :delete, :confirm => 'Do you really want to continue?' %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,41 @@
+<fieldset>
+  <legend>General information</legend>
+  <div class="fm-req">
+    <%= f.label :title, 'Title:' %>
+    <%= f.text_field :title %>
+  </div>    
+  <div class="fm-req">
+    <%= f.label :day, 'Day:' %>
+    <%= f.text_field  :day %>
+  </div>
+  <div class="fm-req">
+    <%= f.label :month, 'Month:' %>
+    <%= f.text_field :month %>
+  </div>
+  <% unless @holiday.filename.blank? %>
+    <div class="fm-req" style="margin-left: 90px; margin-top: 20px;">
+      <%= image_tag(@holiday.public_filename(:standart)) %>
+      <%= link_to 'Remove image', remove_image_admin_holiday_path(@holiday) %>
+    </div>
+  <% else %>
+    <div class="fm-req">
+      <%= f.label :description, 'Image:' %>
+      <%= custom_file_field 'holiday[uploaded_data]' %>
+    </div>
+  <% end %>
+    
+</fieldset>
+
+<fieldset>
+  <legend>SEO stuff</legend>
+  <div class="fm-opt">
+    <%= f.label :price, 'Description:' %><%= f.text_area :seo_description %>
+  </div>
+  <div class="fm-opt">
+    <%= f.label :price, 'Keywords:' %><%= f.text_field :seo_keywords %>
+  </div>
+</fieldset>
+
+<div id="fm-submit" class="fm-req">
+  <%= f.submit 'Save' %> <%= f.submit 'Save go back' %>
+</div>

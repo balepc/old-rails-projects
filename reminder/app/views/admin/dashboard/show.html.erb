@@ -1,0 +1,28 @@
+<div class="dashboard-box">
+  <h2>Users</h2>
+  <ul>
+    <li>Virtual users ............... <%= VirtualUser.count%></li>
+    <li>Registred users ........ <%= User.count%></li>
+    
+  </ul>
+</div>
+<div class="dashboard-box">
+  <h2>Items</h2>
+  <ul>
+    <li>Total items ............ <%= Item.count %></li>
+    <li>Today shows ............ TBD</li>
+    <li>Today select............ TBD</li>
+    <li>Totally shows ............ <%= Item.sum(:view_show_count) %></li>
+    <li>Totally select............ <%= Item.sum(:selection_count) %></li>
+    
+  </ul>
+</div>
+<div class="dashboard-box">
+  <h2>Stats</h2>
+  <ul>
+    <li>Unique users ....... TBD</li>
+    <li>Hits ............... TBD</li>
+    
+  </ul>
+</div>
+

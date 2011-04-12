@@ -1,0 +1,55 @@
+<tbody class="accessories_container">
+  <tr>
+    <% if complect %>
+      <td width="100%">
+        <input class="accessories_lookup" type="text" name="item[selected_accessories][][lookup]" value="<%= complect.item.lookup_value %>" readonly="true">
+      </td>
+      <td>
+        <input type="text" name="item[selected_accessories][][count]" value="<%= complect.count %>">
+      </td>
+    <% else %>
+      <td width="100%">
+        <input class="accessories_lookup" type="text" name="item[selected_accessories][][lookup]">
+      </td>
+      <td>
+        <input  type="text" name="item[selected_accessories][][count]" value="1">
+      </td>
+    <% end %>
+
+    <td>
+      <%= link_to_function "Удалить", "$(this).closest('.accessories_container').remove();accessoriesChanged();" %>
+    </td>
+  </tr>
+</tbody>
+
+<script type="text/javascript">
+  function formatItem(row) {
+    var res = row[1];
+    if (row[2] != '') { res += ' ('+row[2]+')'    }
+    if (row[3] != '') { res += (' Код: ' + row[3]) }
+    if (row[4] != '') { res += (' Артикул: ' + row[4]) }
+
+    return res;
+  }
+
+  $(document).ready(function() {
+    $(".accessories_lookup").autocomplete(
+    "/admin/items/accessories", {
+      delay:4,
+      minChars:3,
+      matchSubset:1,
+      matchContains:1,
+      cacheLength:10,
+      formatItem:formatItem,
+      autoFill:true
+    }
+  );
+  });
+</script>
+
+<script type="text/javascript">
+  function accessoriesChanged() {
+    var len = $("#custom_accessories tbody.accessories_container").length
+    $("#custom_accessories").toggle(len > 0)
+  }
+</script>

@@ -1,0 +1,11 @@
+<% if current_user %>
+  <% if current_user.items.include?(@item) %>
+    <% form_remote_tag :url => favorite_path(current_user.favorites.detect{|f| f.item == @item}, :item_id => @item.id), :method => :delete do %>
+      <%= submit_tag 'Убрать из избранного', :class=>"submit-reset2"  %>
+    <% end %>
+  <% else %>
+    <% form_remote_tag :url => favorites_path(:item_id => @item.id) do %>
+      <%= submit_tag 'Добавить в избранное', :class=>"submit-reset2"  %>
+    <% end %>        
+  <% end %>
+<% end %>

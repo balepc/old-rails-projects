@@ -1,0 +1,57 @@
+<!--MAIN CONTAINER--> 
+<div class="main-container">
+  <div class="particular-gift">
+    <div class="imagery">
+      <center style="height: 255px;">
+        <% @item.assets.each do |asset| %>
+          <% if (params[:asset].blank? and asset.default?) %>
+            <%= image_tag(asset.public_filename(:medium), :class => 'large-image', :id=>"Asset_#{asset.id}") %>
+          <% else %>
+            <%= image_tag(asset.public_filename(:medium), :class => 'large-image', :style => "display:none;", :id=>"Asset_#{asset.id}") %>
+          <% end %>
+        <% end %>
+        <% if @item.assets.size > 1 %>
+          <% @item.assets.each do |asset| %>
+            <%= link_to image_tag(asset.public_filename(:square), :class => 'small-image'), '#', {:class=>'descr-img', :onclick=> "$(\"img.large-image\").hide(); $('#Asset_#{asset.id}').show();"} %>
+          <% end %>
+        <% end %>
+      </center>
+    </div>
+    <div class="gift-description">
+      <div class="gift-description">
+        <h2><%= @item.title %></h2>
+        <%= RedCloth.new(@item.description).to_html %>
+        <br />        
+        <p class="descr-text"><strong>Цена:&nbsp;</strong> <%= @item.price %> <%= @item.currency.code if @item.currency  %></p>
+        <p>&nbsp;</p>
+        <% form_tag select_item_path(@item) do %>
+          <%= submit_tag 'Купить', :class=>"submit-reset2"  %>
+        <% end %>
+                        
+        <div id="favorite_buttons">
+          <%= render :partial => 'favorite_buttons' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br class="clear"/>
+<div class="other-gift-container2">
+  <div id="other_items">    
+    <script>
+        jQuery(document).ready(function($) {
+            $('.pagination_move').livequery('click', function() {
+                $('#other_items').load(this.href)
+                return false
+            })
+        })
+        $.ajax({
+            url: "other?other_class=other-gift2",
+            cache: false,
+            success: function(html){
+                $("#other_items").append(html);
+            }
+        });
+    </script>
+  </div>
+</div>

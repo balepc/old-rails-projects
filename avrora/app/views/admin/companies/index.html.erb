@@ -1,0 +1,43 @@
+<% content_for :sub_menu do %>
+  <%= link_to image_tag('admin/page_new.gif')+'Добавить компанию', new_admin_company_path %>
+<% end %>
+
+<% content_for :lang_menu do %>
+  <%= render :partial => "/admin/shared/lang" %>
+<% end %>
+
+<%# form_tag admin_companies_path, :method => :get do |form| %>
+
+<table class="list-table">
+  <tr>
+    <td class="table_heading table_checkcol"><input type="checkbox" class="check" disabled/></td>
+    <td class="table_heading">Название</td>
+    <td class="table_heading">WWW</td>
+
+    <td class="table_heading table_linkcol">&nbsp;</td>
+  </tr>
+
+  <% @companies.each do |block| %>
+    <tr class="<%= cycle('', 'grey')  %>" >
+      <td class="table_checkcol"><input type="checkbox" class="check" disabled/></td>
+      <td><%= bt block.name, 50 %></td>
+      <td><%= bt block.www, 50 %></td>
+
+      <td style="text-align:center">
+        <%= link_to image_tag('admin/application_form_edit.png', :title=>'Редактировать компанию'), edit_admin_company_path(block) %>
+        <%= link_to image_tag('admin/application_form_delete.png', :title=>'Удалить компанию'), admin_company_path(block), :method => :delete, :confirm => 'Вы действительно хотите удалить запись?' %>
+      </td>
+    </tr>
+  <% end %>
+
+</table>
+
+<%# end  %>
+
+<%#*<script type="text/javascript">%>
+  <%#*function sort_by(column, asc) {%>
+    <%#*$("#sort_column").val(column)%>
+    <%#*$("#sort_asc").val(asc)%>
+    <%#*window.location.reload()%>
+  <%#*}%>
+<%#*</script>%>

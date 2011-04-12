@@ -1,0 +1,4 @@
+<p class="breadscr">
+  <% anc = @category.self_and_ancestors.to_a  %>
+  <%= anc.collect {|c| "<span class=\"inactivecrumb\">#{anc.last?(c) ? c.name : link_to(c.name, category_path(c))}</span>"}.join(" &ndash; ") %>
+</p>

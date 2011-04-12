@@ -1,0 +1,27 @@
+<% content_for :sub_menu do %>
+  <%= link_to image_tag('admin/brick_go.png')+'Применить переводы', apply_admin_view_translations_path, :method=>:post %>
+<% end %>
+
+<table class="list-table">
+  <tr>
+    <td class="table_heading table_checkcol"><input type="checkbox" class="check" disabled/></td>
+    <td class="table_heading px170"><%= 'Ключ' %></td>
+    <td class="table_heading"><%= 'По-английски' %></td>
+    <td class="table_heading"><%= 'По-русски' %></td>
+    <td class="table_heading table_linkcol">&nbsp;</td>
+  </tr>
+
+  <% @translations.each do |translation| %>
+    <tr class="<%= cycle('grey', '')  %>" >
+      <td class="table_checkcol"><input type="checkbox" class="check"/></td>
+      <td><%= bt translation.code, 15 %></td>
+      <td><%= bt translation.value_en, 25 %></td>
+      <td><%= bt translation.value_ru, 25 %></td>
+      <td style="text-align: center;">
+        <%= link_to image_tag('admin/application_form_edit.png', :title=>'Редактировать перевод'), edit_admin_view_translation_path(translation) %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<br/><br/>

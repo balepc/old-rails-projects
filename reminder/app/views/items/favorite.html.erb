@@ -1,0 +1,7 @@
+<div class="favority_items">
+  <ul>
+    <% @items.each do |item| %>
+      <li><%= item.title %> <%= link_to 'Удалить', favorite_path(current_user.favorites.detect{|f| f.item == item}), :method => :delete %></li>
+    <% end %>
+  </ul>
+</div>

@@ -1,0 +1,41 @@
+<div id="wrap-content-2cols">
+  <div id="search-container">
+  <h1><%= t(:search_results) %></h1>
+
+  <% if @query %>
+  <p>Поиск: <%= @query %></p>
+  <br />
+  <% end %>
+
+  <%= flash[:message] %>
+
+  <% if defined?(@items) %>
+    <ul>
+      <% if !@items.blank? %>
+      <li style="padding: 5px 0"><b>Продукты</b></li>
+      <% end %>
+
+      <% @items.each do |item| %>
+        <li><%= link_to item.model, item_path(item) %></li>
+      <% end %>
+
+      <% if !@categories.blank? %>
+        <li style="padding: 5px 0"><b>Категории</b></li>
+      <% end %>
+
+      <% @categories.each do |category| %>
+        <li>
+          <h2><%= link_to category.name, category_path(category) %></h2>
+        </li>
+      <% end %>
+    </ul>
+    <% if @items.empty? and @categories.empty? %>
+      <%= t(:nothing_found) %>
+    <% end %>
+  <% end %>
+
+  <% flash[:message] = "" %>
+
+  </div>
+
+</div>

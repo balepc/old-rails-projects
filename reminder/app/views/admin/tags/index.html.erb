@@ -1,0 +1,27 @@
+<% content_for :sub_menu do %>
+  <ul>
+    <li><%= link_to 'New tag', new_admin_tag_path %></li>
+  </ul>
+<% end %>
+
+<table width="100%" class="grid">
+  <tr>
+    <th>Name</th>
+    <th>Style</th>
+    <th>Link</th>
+    
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+  </tr>
+  
+  <% @tags.each do |tag| %>
+    <tr class="<%= cycle('odd', 'even')  %>" >
+      <td align=right><%= tag.name %></td>
+      <td><%= tag.style %></td>
+      <td><%= tag.link %></td>
+    
+      <td><%= link_to 'edit', edit_admin_tag_path(tag) %></td>
+      <td><%= link_to 'remove', admin_tag_path(tag), :method => :delete, :confirm => 'Do you really want to continue?' %></td>
+    </tr>
+  <% end %>
+</table>
